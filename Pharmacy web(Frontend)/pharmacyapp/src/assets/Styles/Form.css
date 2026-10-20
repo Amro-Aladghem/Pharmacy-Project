@@ -1,0 +1,28 @@
+#sign-up-container {
+    width: 100%;
+    height: 85%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 75px;
+
+}
+
+#sign-up-form {
+    width: 300px;
+    height: 430px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 6px 6px;
+    box-shadow: 2px 5px 1px rgb(2, 205, 205);
+    background-color: rgb(255, 86, 114);
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,142 @@
+================================================================================
+              PHARMACY WEB PLATFORM - PROJECT OVERVIEW
+                      Ideas and Process Documentation
+================================================================================
+
+PROJECT DESCRIPTION
+-------------------
+The Pharmacy Web Platform is a comprehensive digital ecosystem designed to 
+connect customers with pharmacies. It facilitates online medicine purchases, 
+pharmacy management, and administrative oversight through a unified web-based 
+system serving Jordan and potentially other countries.
+
+CORE STAKEHOLDERS
+-----------------
+1. CUSTOMERS: End users purchasing medications and health products
+2. PHARMACIES: Registered pharmacy businesses managing inventory and orders
+3. MANAGERS: Staff members of pharmacies handling daily operations
+4. ADMINS: Pharmacy administrators overseeing pharmacy operations
+5. SYSTEM ADMINS: Platform administrators managing the entire system
+
+
+KEY BUSINESS PROCESSES
+----------------------
+
+1. USER REGISTRATION & AUTHENTICATION
+   - Customers, pharmacies, and managers can create accounts
+   - Email verification system with 3-minute token expiration
+   - Role-based access control (Customer, Manager, Admin, System Admin)
+   - Token-based authentication with expiry tracking
+
+2. PHARMACY MANAGEMENT
+   - Pharmacies register and manage their profiles
+   - Each pharmacy can set delivery locations across governorates
+   - Currency and balance tracking per pharmacy
+   - Status management (Active/Inactive)
+   - Manager assignment for staff operations
+
+3. PRODUCT CATALOG
+   - System-wide product database maintained by system admins
+   - 12 medical types (tablets, capsules, syrup, injections, etc.)
+   - 18 medical categories (pain relievers, antibiotics, vitamins, etc.)
+   - Pharmacy-specific product inventory with pricing
+   - Product image uploads via Cloudinary cloud storage
+
+4. CUSTOMER SHOPPING EXPERIENCE
+   - Browse products across multiple pharmacies
+   - Shopping cart functionality with real-time updates
+   - Distance-based delivery fee calculation
+   - Multiple payment methods: PayPal, MasterCard, Visa, Click, On Delivery
+   - Order status tracking (Pending ? Preparing ? Delivering ? Finished)
+
+5. ORDER MANAGEMENT
+   - Customers place orders from multiple pharmacies
+   - Orders tracked with 7 status stages
+   - Payment verification and recording
+   - Delivery coordination using Mapbox integration
+   - Order refunds with request tracking
+
+6. MEETING/CONSULTATION REQUESTS
+   - Customers can request meetings with pharmacy staff
+   - Meeting payment processing separate from product orders
+   - Pending requests requiring pharmacy acceptance
+   - Status tracking (Sent ? Pending ? Accepted/Rejected ? Finished)
+
+7. REFUND SYSTEM
+   - Two refund types: Order refunds and Request refunds
+   - Four-stage refund process (Sent ? Pending ? Accepted/Rejected)
+   - Request submission and admin approval workflow
+
+8. MESSAGING SYSTEM
+   - Direct communication between customers and pharmacies
+   - Message tracking with date and timestamp logging
+   - Support for customer inquiries and order-related communication
+
+9. ADMINISTRATIVE OVERSIGHT
+   - System admins manage medical types and categories
+   - Admin activity logging
+   - Customer and pharmacy activity logging
+   - Email verification management
+   - System-wide settings configuration
+
+10. DELIVERY & LOGISTICS
+    - Governorate-based delivery zones in Jordan (12 governorates)
+    - Distance-based delivery fee structure (0km, 3km, 20km, 35km tiers)
+    - Pharmacy-specific delivery location management
+    - Distance calculation from customer to pharmacy
+
+
+SYSTEM FEATURES
+---------------
+
+MULTI-LANGUAGE SUPPORT: 
+- English and Arabic names for all categories and statuses
+
+GEOGRAPHIC SCOPE: 
+- Currently configured for Jordan
+- Expandable to additional countries
+
+FINANCIAL TRACKING:
+- Pharmacy balance management
+- Payment method integration
+- Invoice generation and history
+
+SECURITY & VERIFICATION:
+- Email verification for new registrations
+- Token-based session management
+- Role-based access control
+
+DATA INTEGRITY:
+- Comprehensive logging (Admin logs, Customer logs)
+- Activity tracking for all user roles
+- Audit trail for transactions
+
+
+TECHNOLOGY INTEGRATION
+----------------------
+- Cloud Storage: Cloudinary for image uploads
+- Maps: Mapbox for location-based services
+- Payment Processing: Multiple payment gateway support
+- Database: SQL Server with Entity Framework Core
+- API Architecture: RESTful services
+
+
+PROJECT WORKFLOW SUMMARY
+------------------------
+Customer discovers pharmacies ? Browses products ? Adds to cart ? Checks out ?
+Selects payment method ? Places order ? Receives delivery ? Provides feedback
+
+Pharmacy registers ? Adds inventory ? Manages orders ? Processes payments ? 
+Coordinates delivery ? Handles refunds ? Manages customer communication
+
+
+SUCCESS METRICS
+---------------
+- Seamless customer purchasing experience
+- Efficient pharmacy order management
+- Real-time order tracking visibility
+- Secure payment processing
+- Quick order fulfillment
+- Customer satisfaction through consultation requests
+
+================================================================================

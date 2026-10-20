@@ -1,0 +1,13 @@
+
+
+#textarea-product{
+    width: 330px;
+    height: 140px;
+    overflow: scroll;
+    resize: none;
+}
+
+#image-upload{
+background-color: rgba(206, 204, 201, 0.037);
+}
+
