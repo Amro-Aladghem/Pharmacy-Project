@@ -134,7 +134,7 @@ export function CheckOut() {
             <Typography
               level="title-lg"
               sx={{
-                backgroundColor: "aqua",
+                backgroundColor: "rgba(8, 176, 176, 0.12)",
                 borderRadius: "8px",
                 padding: "5px 5px",
               }}

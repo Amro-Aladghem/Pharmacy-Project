@@ -57,7 +57,7 @@ export function OrderDetails() {
   }, [authInfo]);
 
   return (
-    <>
+    <div className="order-details-page" dir="rtl">
       {loading ? (
         <Box
           sx={{
@@ -131,7 +131,7 @@ export function OrderDetails() {
           />
         </>
       )}
-    </>
+    </div>
   );
 }
 

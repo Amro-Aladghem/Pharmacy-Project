@@ -153,7 +153,7 @@ export function RequestMeeting()
                 </Box>
 
                 <Typography level='h3' sx={{
-                    backgroundColor:'aqua',
+                    backgroundColor:'rgba(8, 176, 176, 0.12)',
                     borderRadius:'5px',
                     padding:'3px 3px'
                 }}

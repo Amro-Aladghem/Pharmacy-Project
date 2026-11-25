@@ -52,11 +52,11 @@ export function PharmacyProducts() {
   const ProductCards = products.map((Product) => {
     return (
       <Grid
+        key={Product.phProductId}
         size={{ xs: 6, md: 2.4, sm: 4 }}
         sx={{ display: "flex", justifyContent: "center" }}
       >
         <ProductCard
-          key={Product.phProductId}
           Id={Product.phProductId}
           Image={Product.productImageURL}
           Name={Product.name}
@@ -79,6 +79,7 @@ export function PharmacyProducts() {
     >
       <Grid
         container
+        className="pharmacy-products-grid"
         spacing={1}
         sx={{
           my: 4,

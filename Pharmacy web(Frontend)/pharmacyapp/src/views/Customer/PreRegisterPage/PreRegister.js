@@ -1,7 +1,7 @@
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import TextField from "@mui/material/TextField";
 import { Button, ListItemAvatar } from "@mui/material";
-import "./PreRegister.css";
+import "../../../assets/Styles/CustomerAuth.css";
 import { useState } from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
@@ -96,19 +96,38 @@ export function PreRegister() {
   };
 
   return (
-    <div id="sign-up-container">
-      <div id="sign-up-form">
-        <h1>تسجيل أول مرة</h1>
-        <MeetingRoomIcon sx={{ color: "rgb(5, 197, 197)" }} fontSize="large" />
+    <main id="sign-up-container" className="customer-auth-layout auth-preregister-layout" dir="rtl">
+      <aside className="customer-auth-intro">
+        <img src="/MainLogo.png" alt="PharmaPal" />
+        <span>خطوة أولى لحسابك</span>
+        <h2>ابدأ رحلتك الصحية معنا</h2>
+        <p>أنشئ بيانات الدخول، ثم أكمل معلوماتك وموقعك لتستفيد من خدمات PharmaPal.</p>
+        <div className="customer-auth-highlights">
+          <span>إنشاء حساب بخطوات بسيطة</span>
+          <span>إمكانية التسجيل باستخدام Google</span>
+          <span>الوصول إلى خدمات الصيدليات</span>
+        </div>
+      </aside>
+
+      <section id="sign-up-form" className="customer-auth-card">
+        <div className="customer-auth-heading">
+          <span className="customer-auth-icon"><MeetingRoomIcon /></span>
+          <div>
+            <span>إنشاء حساب</span>
+            <h1>تسجيل أول مرة</h1>
+            <p>أدخل بريدك الإلكتروني وأنشئ كلمة مرور للمتابعة.</p>
+          </div>
+        </div>
         <form
           onSubmit={(event) => {
             event.preventDefault();
           }}
         >
           <TextField
+            dir="rtl"
             value={email}
             id="email-input"
-            label="Eamil"
+            label="البريد الإلكتروني"
             type="email"
             variant="outlined"
             fullWidth
@@ -119,6 +138,7 @@ export function PreRegister() {
             }}
           />
           <TextField
+            dir="rtl"
             value={password}
             label="كلمة مرور جديدة"
             type={showPassword ? "text" : "password"}
@@ -129,7 +149,7 @@ export function PreRegister() {
             slotProps={{
               input: {
                 endAdornment: (
-                  <InputAdornment position="end">
+                    <InputAdornment position="start">
                     <IconButton
                       sx={{ width: "fit-content" }}
                       onClick={handleTogglePassword}
@@ -146,6 +166,7 @@ export function PreRegister() {
             }}
           />
           <TextField
+            dir="rtl"
             value={confirmPassword}
             label="تأكيد كلمة المرور"
             type="password"
@@ -157,11 +178,13 @@ export function PreRegister() {
               handelConfirmPasswrodChange(event.target.value);
             }}
           />
-          <h6 style={{ margin: "6px 0px" }}>أو سجل عبر google</h6>
-          <GoogleLogin
-            onSuccess={handleGoogleSuccess}
-            onError={handleGoogleFailure}
-          />
+          <div className="customer-auth-google-divider"><span>أو سجّل باستخدام</span></div>
+          <div className="customer-auth-google-button">
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleFailure}
+            />
+          </div>
           <Button
             id="sign-up-btn"
             type="submit"
@@ -181,8 +204,8 @@ export function PreRegister() {
         </form>
 
         {IsLoading ? <MainLoader top="50%" left="50%" /> : null}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 

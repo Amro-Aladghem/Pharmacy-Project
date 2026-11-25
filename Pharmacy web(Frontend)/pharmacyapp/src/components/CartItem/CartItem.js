@@ -53,7 +53,7 @@ export function CartItem({
             <Typography
               level="title-lg"
               sx={{
-                backgroundColor: "aqua",
+                backgroundColor: "rgba(8, 176, 176, 0.12)",
                 borderRadius: "8px",
                 width: "fit-content",
                 padding: "2px 2px",

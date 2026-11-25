@@ -123,7 +123,7 @@ export function HorizontalCard({ title, Type }) {
               {info.isNotAccepted && info.IsTheSameDay ? (
                 <Typography
                   level="body-lg"
-                  sx={{ backgroundColor: "aqua", width: "fit-content" }}
+                  sx={{ backgroundColor: "rgba(8, 176, 176, 0.12)", width: "fit-content" }}
                 >
                   لديك طلب مرفوض
                 </Typography>

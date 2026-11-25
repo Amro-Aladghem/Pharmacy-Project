@@ -146,7 +146,7 @@ export function Cart() {
         <Typography
           level="h1"
           sx={{
-            backgroundColor: "aqua",
+            backgroundColor: "rgba(8, 176, 176, 0.12)",
             borderRadius: "8px",
           }}
         >

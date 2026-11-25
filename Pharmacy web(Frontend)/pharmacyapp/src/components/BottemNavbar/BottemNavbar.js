@@ -62,6 +62,9 @@ export function BottemNavbar() {
         left: 0,
         zIndex: 1000,
         display: { xs: "block", md: "none", sm: "block" },
+        backgroundColor: "var(--surface)",
+        boxShadow: "0 -4px 16px rgba(16, 24, 40, 0.08)",
+        borderRadius: "var(--radius-lg) var(--radius-lg) 0 0",
       }}
     >
       <BottomNavigation
@@ -69,6 +72,11 @@ export function BottemNavbar() {
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
+        }}
+        sx={{
+          height: 64,
+          backgroundColor: "transparent",
+          "& .MuiBottomNavigationAction-label": { fontWeight: 600 },
         }}
       >
         <BottomNavigationAction
@@ -80,9 +88,9 @@ export function BottemNavbar() {
           }
           onClick={() => navigate("/cart")}
           sx={{
-            color: "gray",
+            color: "var(--ink-muted)",
             "&.Mui-selected": {
-              color: "rgb(255, 86, 114)",
+              color: "var(--brand)",
             },
           }}
         />
@@ -94,9 +102,9 @@ export function BottemNavbar() {
             icon={page.icon}
             onClick={() => navigate(page.path)}
             sx={{
-              color: "gray",
+              color: "var(--ink-muted)",
               "&.Mui-selected": {
-                color: "rgb(255, 86, 114)",
+                color: "var(--brand)",
               },
             }}
           />

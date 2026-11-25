@@ -1,5 +1,4 @@
 import "./ProductPage.css";
-import Grid from "@mui/material/Grid2";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { Box } from "@mui/material";
 import { useState } from "react";
@@ -61,126 +60,103 @@ export function ProductInfo({ info, pharmacyId }) {
   }
 
   return (
-    <>
-      <Grid
-        size={{ md: 6, xs: 12 }}
-        sx={{ display: "flex", justifyContent: "center" }}
-      >
-        <img id="product-img" alt="productImage" src={info.ImageURL} />
-      </Grid>
+    <section className="product-overview-card" dir="rtl">
+      <div className="product-photo-frame">
+        <span className="product-photo-tag">منتج صيدلاني</span>
+        <img id="product-img" alt={info.Name || "صورة المنتج"} src={info.ImageURL} />
+      </div>
 
-      <Grid
-        size={{ md: 6, sm: 12 }}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "end",
-          columnGap: "3",
-          marginTop: { md: 4 },
-        }}
-      >
-        <Typography level="h1">{info.Name} </Typography>
+      <div className="product-details-panel">
+        <div className="product-title-group">
+          <span className="product-eyebrow">تفاصيل المنتج</span>
+          <Typography level="h1">{info.Name}</Typography>
+        </div>
 
         {itemsCount == 0 ? (
-          <Box
-            id="check-ph-alarm"
-            sx={{
-              display: "flex",
-              justifyContent: "start",
-              alignItems: "center",
-            }}
-          >
-            <ProductionQuantityLimitsIcon
-              fontSize="medium"
-              sx={{ color: "red", display: "inline" }}
-            />
-            <Typography
-              level="body-sm"
-              sx={{ display: "inline", color: "red" }}
-            >
-              اسحب للاسفل للتحقق من رسوم التوصيل أو توفر الخدمة
+          <Box className="product-delivery-hint" id="check-ph-alarm">
+            <ProductionQuantityLimitsIcon />
+            <Typography level="body-sm">
+              اسحب للأسفل للتحقق من رسوم التوصيل أو توفر الخدمة
             </Typography>
           </Box>
         ) : null}
 
-        <h2>
-          السعر:
-          <span style={{ backgroundColor: "rgb(255, 86, 114)" }}>
-            {info.Price}jd
-          </span>
-        </h2>
+        <div className="product-price-row">
+          <span>السعر</span>
+          <strong dir="ltr">
+            {info.Price} <small>د.أ</small>
+          </strong>
+        </div>
 
-        <div id="btns-container">
-          <div>
-            <button
-              className="add-tocart-btn"
-              onClick={() => handelAddToCartClicked()}
-            >
-              <LocalMallIcon />
-              اضف للسلة
-            </button>
-          </div>
-          <div id="add-sub-btn" className="card__counter">
-            <button
-              className="card__btn"
-              onClick={() => {
-                setCounter((prev) => {
-                  if (prev == 0) return 0;
+        <div className="product-purchase-row" id="btns-container">
+          <button
+            className="add-tocart-btn"
+            onClick={() => handelAddToCartClicked()}
+          >
+            <LocalMallIcon />
+            أضف للسلة
+          </button>
 
-                  return prev - 1;
-                });
-              }}
-            >
-              -
-            </button>
+          <div className="product-quantity-control">
+            <span>الكمية</span>
+            <div id="add-sub-btn" className="card__counter" aria-label="تحديد الكمية">
+              <button
+                className="card__btn"
+                aria-label="تقليل الكمية"
+                onClick={() => {
+                  setCounter((prev) => {
+                    if (prev == 0) return 0;
 
-            <div className="card__counter-score">{counter}</div>
+                    return prev - 1;
+                  });
+                }}
+              >
+                −
+              </button>
 
-            <button
-              className="card__btn card__btn-plus"
-              onClick={() => {
-                setCounter((prev) => {
-                  if (prev == info.Stoke) return prev;
+              <div className="card__counter-score">{counter}</div>
 
-                  return prev + 1;
-                });
-              }}
-            >
-              +
-            </button>
+              <button
+                className="card__btn card__btn-plus"
+                aria-label="زيادة الكمية"
+                onClick={() => {
+                  setCounter((prev) => {
+                    if (prev == info.Stoke) return prev;
+
+                    return prev + 1;
+                  });
+                }}
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
 
-        <Box display="flex" justifyContent="start" gap={2}>
-          <h3>
-            شكل المنتج: <span className="secondry-bg">{info.TypeName}</span>
-          </h3>
-
-          <h3>
-            سعة الدواء: <span className="secondry-bg"> {info.Qauntity}</span>
-          </h3>
-        </Box>
-
-        <Box display="flex" justifyContent="start" gap={1}>
-          <h4>
-            تاريخ الأنتاج:
-            <span className="secondry-bg">
-              {info.ProducedDate.split("T")[0]}
-            </span>
-          </h4>
-
-          <h4>
-            تاريخ الأنتهاء:
-            <span className="secondry-bg">{info.EndDate.split("T")[0]}</span>
-          </h4>
-        </Box>
-
-        <h3>
-          الكمية المتوفرة:
-          <span className="secondry-bg">{info.Stoke} علبة</span>
-        </h3>
-      </Grid>
-    </>
+        <div className="product-spec-grid">
+          <div className="product-spec-item">
+            <span>شكل المنتج</span>
+            <strong>{info.TypeName}</strong>
+          </div>
+          <div className="product-spec-item">
+            <span>سعة الدواء</span>
+            <strong>{info.Qauntity}</strong>
+          </div>
+          <div className="product-spec-item">
+            <span>تاريخ الإنتاج</span>
+            <strong dir="ltr">{info.ProducedDate.split("T")[0]}</strong>
+          </div>
+          <div className="product-spec-item">
+            <span>تاريخ الانتهاء</span>
+            <strong dir="ltr">{info.EndDate.split("T")[0]}</strong>
+          </div>
+          <div className="product-spec-item product-stock-item">
+            <span>المتوفر بالمخزون</span>
+            <strong>{info.Stoke} علبة</strong>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

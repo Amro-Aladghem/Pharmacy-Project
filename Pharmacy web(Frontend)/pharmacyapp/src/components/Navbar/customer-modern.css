@@ -1,0 +1,1026 @@
+.customer-app {
+  --customer-brand: rgb(255, 86, 114);
+  --customer-brand-dark: rgb(231, 59, 91);
+  --customer-teal: rgb(8, 176, 176);
+  --customer-teal-dark: rgb(6, 147, 147);
+  --customer-ink: #20252b;
+  --customer-muted: #68737d;
+  --customer-line: #e7eaee;
+  --customer-page: #f5f7f8;
+  --customer-white: #fff;
+  --customer-radius: 16px;
+  --customer-shadow: 0 8px 24px rgba(27, 39, 51, 0.07);
+  min-height: 100vh;
+  padding-bottom: 76px;
+  color: var(--customer-ink);
+  background: var(--customer-page);
+  direction: rtl;
+  font-family: var(--font-family);
+}
+
+.customer-content {
+  width: min(100% - 40px, 1440px);
+  min-height: calc(100vh - 150px);
+  margin: 0 auto;
+  padding: 28px 0 56px;
+  box-sizing: border-box;
+}
+
+.customer-app h1,
+.customer-app h2,
+.customer-app h3,
+.customer-app h4,
+.customer-app .MuiTypography-h1,
+.customer-app .MuiTypography-h2,
+.customer-app .MuiTypography-h3,
+.customer-app .MuiTypography-h4 {
+  color: var(--customer-ink);
+  font-family: var(--font-family);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.customer-app h1,
+.customer-app .MuiTypography-h1 {
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+}
+
+.customer-app h2,
+.customer-app .MuiTypography-h2 {
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+}
+
+.customer-app h3,
+.customer-app .MuiTypography-h3 {
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+}
+
+.customer-app .MuiTypography-root {
+  font-family: var(--font-family);
+}
+
+.customer-app .MuiCard-root,
+.customer-app #horiz-card,
+.customer-app .info-data-container,
+.customer-app #pharmacy-card {
+  border: 1px solid var(--customer-line);
+  border-radius: var(--customer-radius);
+  background-color: var(--customer-white);
+  box-shadow: 0 2px 8px rgba(27, 39, 51, 0.045);
+}
+
+.customer-app .MuiCard-root {
+  overflow: hidden;
+  color: var(--customer-ink);
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.customer-app a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.customer-app .MuiButton-root,
+.customer-app .main-btn,
+.customer-app .add-tocart-btn {
+  min-height: 42px;
+  border-radius: 11px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  box-shadow: none;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.customer-app .main-btn {
+  width: auto;
+  min-width: 120px;
+  padding: 10px 18px;
+  background: var(--customer-teal);
+  color: white;
+}
+
+.customer-app .main-btn:hover,
+.customer-app .add-tocart-btn:hover {
+  background-color: var(--customer-teal-dark);
+  box-shadow: 0 5px 14px rgba(8, 176, 176, 0.2);
+  transform: none;
+}
+
+.customer-app .add-tocart-btn {
+  background: var(--customer-brand);
+  color: white;
+}
+
+.customer-app .add-tocart-btn:hover {
+  background: var(--customer-brand-dark);
+}
+
+.customer-app input:not([type="radio"]):not([type="checkbox"]):not(.MuiInputBase-input),
+.customer-app textarea:not(.MuiInputBase-input),
+.customer-app select {
+  max-width: 100%;
+  border: 1px solid var(--customer-line);
+  border-radius: 10px;
+  background-color: white;
+  color: var(--customer-ink);
+  font: inherit;
+}
+
+.customer-app input:not(.MuiInputBase-input):focus,
+.customer-app textarea:not(.MuiInputBase-input):focus,
+.customer-app select:focus {
+  outline: 2px solid rgba(8, 176, 176, 0.18);
+  border-color: var(--customer-teal);
+}
+
+.customer-app .MuiOutlinedInput-root {
+  border-radius: 10px;
+  background: white;
+}
+
+.customer-app .MuiOutlinedInput-notchedOutline {
+  border-color: var(--customer-line);
+}
+
+.customer-app .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--customer-teal);
+}
+
+.customer-app #regions-menu,
+.customer-app #Governorates-menu {
+  min-height: 44px;
+  padding: 8px 38px 8px 14px;
+  border: 1px solid var(--customer-line);
+  border-radius: 10px;
+  background-color: white;
+  color: var(--customer-ink);
+  box-shadow: 0 2px 8px rgba(27, 39, 51, 0.035);
+}
+
+.customer-app #regions-menu:hover,
+.customer-app #Governorates-menu:hover {
+  border-color: rgba(8, 176, 176, 0.55);
+}
+
+.customer-app .MuiTabs-root {
+  border-radius: 12px;
+}
+
+.customer-app #main-popular-container,
+.customer-app #ph-products-container {
+  gap: 16px;
+  padding: 16px 4px 22px;
+  scrollbar-width: thin;
+  scrollbar-color: #c9d0d5 transparent;
+}
+
+.customer-app #product-img {
+  width: min(100%, 390px);
+  height: auto;
+  max-height: 390px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: 18px;
+  border: 1px solid var(--customer-line);
+  border-radius: var(--customer-radius);
+  background: white;
+  box-sizing: border-box;
+}
+
+.customer-app .card__counter {
+  background: #f1f5f6;
+  border: 1px solid var(--customer-line);
+}
+
+.customer-app .card__counter-score,
+.customer-app .card__btn {
+  color: var(--customer-ink);
+}
+
+.customer-app .card__btn:hover,
+.customer-app .card__btn-plus:hover {
+  background: #dfe9eb;
+}
+
+.customer-app .secondry-bg {
+  display: inline-block;
+  border-radius: 7px;
+  padding: 3px 9px;
+  background: rgba(8, 176, 176, 0.11);
+  color: #087f7f;
+}
+
+.customer-app #check-delivery-container {
+  width: 100%;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--customer-line);
+  border-radius: var(--customer-radius);
+  background: white;
+  box-sizing: border-box;
+}
+
+.customer-app #Nearer-Ph-section {
+  width: 100%;
+  min-height: 184px;
+  box-sizing: border-box;
+  gap: 24px;
+  padding: 20px 24px;
+  border: 1px solid #f5d9df;
+  border-radius: 20px;
+  background: linear-gradient(110deg, #fff5f7, #ffffff 78%);
+  box-shadow: 0 4px 14px rgba(27, 39, 51, 0.045);
+}
+
+.customer-app #Nearer-section-img {
+  width: 144px;
+  height: 144px;
+  flex: 0 0 144px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  border: 4px solid #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #f0d6dc;
+  box-sizing: border-box;
+}
+
+.customer-app #Nearer-section-body {
+  align-items: flex-start;
+  text-align: right;
+  gap: 4px;
+}
+
+.customer-app #customer-container {
+  width: min(100%, 980px);
+  margin: 24px auto;
+  padding: clamp(18px, 4vw, 36px);
+  border: 1px solid var(--customer-line);
+  border-radius: var(--customer-radius);
+  background: white;
+  box-shadow: var(--customer-shadow);
+  box-sizing: border-box;
+}
+
+.customer-app .info-data-container {
+  width: min(100% - 32px, 980px);
+  margin: 24px auto;
+  padding: clamp(18px, 4vw, 36px);
+  box-sizing: border-box;
+}
+
+.customer-app #bg-container {
+  margin: 0 auto 28px;
+  padding: 18px 0;
+}
+
+.customer-app #Ph-header-container {
+  width: min(100% - 24px, 1100px);
+  padding: clamp(18px, 4vw, 32px);
+  border: 1px solid var(--customer-line);
+  border-radius: 20px;
+  background: white;
+  box-shadow: var(--customer-shadow);
+  box-sizing: border-box;
+}
+
+.customer-app #pharmacy-img {
+  width: 124px;
+  max-width: 28vw;
+  height: 124px;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 1px var(--customer-line);
+  border-radius: 18px;
+}
+
+.customer-app #pharmacy-info {
+  gap: 8px;
+}
+
+.customer-app #His-card-container,
+.customer-app #option-card-container {
+  border: 1px solid var(--customer-line);
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(27, 39, 51, 0.04);
+  font-family: var(--font-family);
+}
+
+.customer-app #His-card-container {
+  width: min(100%, 360px);
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.customer-app #option-card-container {
+  width: min(100%, 420px);
+  padding: 12px 16px;
+}
+
+.customer-app .MuiTableContainer-root {
+  border: 1px solid var(--customer-line);
+  border-radius: var(--customer-radius);
+  box-shadow: var(--customer-shadow);
+  background: white;
+}
+
+.customer-app .MuiTableHead-root {
+  background: #f1f6f6;
+}
+
+.customer-app .MuiTableCell-root {
+  border-color: var(--customer-line);
+  font-family: var(--font-family);
+}
+
+.customer-app .MuiAccordion-root {
+  border: 1px solid var(--customer-line);
+  border-radius: 12px !important;
+  box-shadow: none;
+}
+
+.customer-app .MuiAccordion-root::before {
+  display: none;
+}
+
+.customer-app .MuiDialog-paper {
+  border-radius: 18px;
+}
+
+.customer-app .MuiAlert-root {
+  border-radius: 12px;
+}
+
+.customer-app #note-category-page {
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: rgba(255, 86, 114, 0.1);
+  color: #8d2940;
+}
+
+.customer-app .MuiCircularProgress-root {
+  color: var(--customer-teal);
+}
+
+.customer-footer {
+  padding: 34px max(20px, calc((100% - 1360px) / 2)) 14px;
+  border-top: 1px solid var(--customer-line);
+  background: #fff;
+  color: var(--customer-ink);
+}
+
+.customer-footer-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 36px;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.customer-footer-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.customer-footer-brand img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.customer-footer-brand strong {
+  display: block;
+  color: var(--customer-brand);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.customer-footer p {
+  margin: 6px 0 0;
+  color: var(--customer-muted);
+  line-height: 1.8;
+}
+
+.customer-footer h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.customer-footer-links > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+}
+
+.customer-footer-links a {
+  width: fit-content;
+  color: var(--customer-muted);
+  font-size: 0.92rem;
+  transition: color 160ms ease;
+}
+
+.customer-footer-links a:hover {
+  color: var(--customer-teal-dark);
+}
+
+.customer-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1360px;
+  margin: 26px auto 0;
+  padding-top: 12px;
+  border-top: 1px solid #eef0f2;
+  color: #87919a;
+  font-size: 0.8rem;
+}
+
+.ai-chat-dock {
+  position: fixed;
+  z-index: 1300;
+  left: 20px;
+  bottom: 88px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.ai-chat-launcher.MuiFab-root {
+  position: static;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  background: var(--customer-teal);
+  color: white;
+  box-shadow: 0 5px 16px rgba(8, 176, 176, 0.24);
+}
+
+.ai-chat-launcher.MuiFab-root:hover {
+  background: var(--customer-teal-dark);
+}
+
+.ai-chat-panel.MuiPaper-root {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  width: min(480px, calc(100vw - 120px));
+  height: min(680px, calc(100dvh - 118px));
+  max-height: min(680px, calc(100dvh - 118px));
+  overflow: hidden;
+  border: 1px solid var(--customer-line);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 14px 40px rgba(27, 39, 51, 0.18);
+}
+
+.ai-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--customer-line);
+  background: #f3fbfb;
+}
+
+.ai-chat-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ai-chat-heading .MuiTypography-root {
+  color: var(--customer-ink);
+  font-weight: 700;
+}
+
+.ai-chat-heading > div > span {
+  color: var(--customer-muted);
+  font-size: 0.8rem;
+}
+
+.ai-chat-avatar {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--customer-teal);
+  color: white;
+}
+
+.ai-chat-messages {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: 12px;
+  padding: 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.ai-chat-compose {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: initial;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 12px;
+  box-sizing: border-box;
+  border-top: 1px solid var(--customer-line);
+  background: white;
+}
+
+.ai-chat-compose input {
+  flex: 1 1 auto;
+  width: 0;
+  height: 44px;
+  padding: 0 13px;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+.ai-chat-send.MuiIconButton-root {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  margin-left: 4px;
+  border-radius: 11px;
+  background: var(--customer-teal);
+  color: white;
+}
+
+.ai-chat-send.MuiIconButton-root:hover {
+  background: var(--customer-teal-dark);
+}
+
+.ai-chat-send.MuiIconButton-root.Mui-disabled {
+  background: #e4ebec;
+  color: #87949a;
+}
+
+.ai-chat-message {
+  width: fit-content;
+  max-width: 88%;
+  padding: 10px 13px;
+  border: 1px solid var(--customer-line);
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.ai-chat-message p {
+  margin: 4px 0 0;
+  color: var(--customer-ink);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.ai-chat-sender {
+  color: var(--customer-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.user-message {
+  align-self: flex-start;
+  border-color: rgba(8, 176, 176, 0.16);
+  background: rgba(8, 176, 176, 0.1);
+}
+
+.assistant-message {
+  align-self: flex-end;
+  background: #f7f8f9;
+}
+
+.products-message {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 0 0;
+  border: 0;
+  background: transparent;
+}
+
+.products-message > .ai-chat-sender {
+  display: block;
+  padding: 0 4px 8px;
+  color: var(--customer-teal-dark);
+}
+
+.ai-chat-products {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 3px 2px 12px;
+  scrollbar-width: thin;
+}
+
+.ai-chat-products > a {
+  flex: 0 0 142px;
+}
+
+.ai-chat-products .MuiCard-root {
+  width: 142px !important;
+  height: 100%;
+}
+
+.ai-chat-loading {
+  display: flex;
+  justify-content: center;
+  padding: 18px;
+}
+
+.order-details-page {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  direction: rtl;
+  text-align: right;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.order-details-page > * {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.order-details-page .MuiTypography-root {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.order-details-title-row {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 !important;
+  padding: 4px 0 !important;
+}
+
+.order-details-title-row > .MuiBox-root {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  flex-wrap: wrap;
+}
+
+.order-details-card {
+  border: 1px solid var(--customer-line);
+  border-radius: var(--customer-radius);
+  background: white;
+  box-shadow: 0 3px 12px rgba(27, 39, 51, 0.05);
+  box-sizing: border-box;
+}
+
+.order-details-card > .MuiTypography-h4 {
+  margin-bottom: 14px;
+  text-align: right;
+}
+
+.order-details-fields {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  text-align: right;
+}
+
+.order-details-field {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--customer-line);
+  border-radius: 11px;
+  background: #f8fafb;
+  box-sizing: border-box;
+}
+
+.order-details-field > .MuiTypography-root:first-child {
+  color: var(--customer-muted);
+  font-size: 0.86rem;
+}
+
+.order-details-field > .MuiTypography-root:not(:first-child) {
+  color: var(--customer-ink);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.order-detail-value {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.order-details-page .order-detail-item {
+  gap: 7px !important;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--customer-line) !important;
+  text-align: right;
+}
+
+.customer-app .MuiAlert-root,
+.customer-app .MuiChip-root {
+  font-family: var(--font-family);
+}
+
+.customer-home {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.customer-home .home-banner {
+  margin: 0 -2px;
+}
+
+.customer-home .home-intro {
+  padding: 4px 4px 0;
+  text-align: right;
+}
+
+.customer-home .home-intro .MuiTypography-h1 {
+  margin: 3px 0 0;
+}
+
+.customer-home .home-intro-copy {
+  display: block;
+  margin-top: 4px;
+  color: var(--customer-muted);
+}
+
+.customer-home .home-eyebrow {
+  display: inline-block;
+  color: var(--customer-teal-dark);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.customer-home .home-section {
+  min-width: 0;
+}
+
+.customer-home .home-section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin: 0 4px 14px;
+}
+
+.customer-home .home-section-heading h2 {
+  margin: 0;
+}
+
+.customer-home .home-section-heading > svg {
+  color: var(--customer-brand);
+}
+
+.customer-home .home-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.customer-home .home-activity-grid > div {
+  min-width: 0;
+}
+
+.customer-home .home-activity-grid #horiz-card {
+  width: 100%;
+  min-height: 132px;
+  box-sizing: border-box;
+}
+
+.customer-home #Nearer-Ph-section-container {
+  padding: 4px;
+}
+
+.customer-home #Nearer-Ph-section {
+  margin: 0;
+}
+
+.customer-home #Nearer-section-body .MuiTypography-root {
+  color: var(--customer-ink);
+}
+
+.customer-home .home-section > #main-popular-container {
+  margin-inline: -4px;
+}
+
+.customer-home .home-services .MuiGrid-container {
+  align-items: stretch;
+}
+
+@media (max-width: 899px) {
+  .ai-chat-dock {
+    left: 14px;
+    bottom: 86px;
+    gap: 10px;
+  }
+
+  .ai-chat-panel.MuiPaper-root {
+    width: min(440px, calc(100vw - 100px));
+    height: min(620px, calc(100dvh - 116px));
+    max-height: min(620px, calc(100dvh - 116px));
+  }
+
+  .customer-footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .customer-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .customer-content {
+    width: min(100% - 28px, 720px);
+    padding-top: 20px;
+    padding-bottom: 36px;
+  }
+
+  .customer-app #Nearer-Ph-section {
+    min-height: 130px;
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .customer-app #Nearer-section-img {
+    width: 104px;
+    height: 104px;
+    flex-basis: 104px;
+    border-radius: 16px;
+  }
+
+  .customer-app #product-img {
+    width: min(100%, 300px);
+    max-height: 300px;
+  }
+
+  .customer-app #check-delivery-container {
+    flex-wrap: wrap;
+  }
+
+  .customer-home {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 599px) {
+  .ai-chat-dock {
+    left: 10px;
+    bottom: 82px;
+    gap: 8px;
+  }
+
+  .ai-chat-launcher.MuiFab-root {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+  }
+
+  .ai-chat-panel.MuiPaper-root {
+    width: calc(100vw - 80px);
+    height: min(540px, calc(100dvh - 112px));
+    max-height: min(540px, calc(100dvh - 112px));
+  }
+
+  .customer-app #Nearer-Ph-section {
+    min-height: 116px;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .customer-app #Nearer-section-img {
+    width: 82px;
+    height: 82px;
+    flex-basis: 82px;
+    border-width: 3px;
+    border-radius: 14px;
+  }
+
+  .customer-footer {
+    padding: 26px 18px 14px;
+  }
+
+  .customer-footer-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .customer-footer-brand {
+    grid-column: auto;
+  }
+
+  .customer-footer-links > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .customer-footer-bottom {
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 20px;
+  }
+
+  .customer-app {
+    padding-bottom: 72px;
+  }
+
+  .customer-content {
+    width: calc(100% - 24px);
+    padding-top: 16px;
+  }
+
+  .customer-app #customer-container,
+  .customer-app .info-data-container {
+    width: 100%;
+    padding: 18px 14px;
+    margin: 16px auto;
+  }
+
+  .customer-app #bg-container {
+    margin-bottom: 20px;
+    padding: 8px 0;
+  }
+
+  .customer-app #Ph-header-container {
+    width: 100%;
+    padding: 16px 12px;
+  }
+
+  .customer-app #pharmacy-img {
+    width: 84px;
+    height: 84px;
+  }
+
+  .customer-app #btns-container {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .customer-app #main-popular-container,
+  .customer-app #ph-products-container {
+    gap: 10px;
+    margin-right: -4px;
+    margin-left: -4px;
+    padding: 12px 4px 18px;
+  }
+
+  .customer-app .MuiTableContainer-root {
+    overflow-x: auto;
+  }
+
+  .customer-home {
+    gap: 18px;
+  }
+
+  .customer-home .home-activity-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .customer-home .home-activity-grid #horiz-card {
+    min-height: unset;
+  }
+
+  .customer-home .home-section-heading {
+    margin-bottom: 10px;
+  }
+
+  .order-details-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .order-details-field {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .order-details-page .order-details-card {
+    width: 100% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-app *,
+  .customer-app *::before,
+  .customer-app *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

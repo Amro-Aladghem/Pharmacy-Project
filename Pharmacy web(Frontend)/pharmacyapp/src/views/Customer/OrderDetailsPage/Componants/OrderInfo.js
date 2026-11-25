@@ -13,43 +13,41 @@ export function OrderInfo({orderId,statusName,date})
             alignItems:'center',
             marginTop:'25px'
           }}>
-            <Box sx={{
-                width:'90%',
-                padding:'15px 15px',
-                boxShadow:'2px 3px 0.5px black',
-                borderRadius:'8px',
-                border:'1px solid black',
-                direction:'rtl'
+            <Box className="order-details-card" sx={{
+                width:'min(90%, 1100px)',
+                padding:'clamp(16px, 3vw, 24px)',
+                direction:'rtl',
+                textAlign:'right'
             }}
             >
                 <Typography level='h4'>
                   معلومات الطلب
                 </Typography>
 
-                <Box sx={{
+                <Box className="order-details-fields" sx={{
                     display:'flex',
                     justifyContent:'space-between',
                     alignItems:{xs:'normal',md:'center'},
                     marginTop:'5px',
                     flexDirection:{xs:'column',md:'row'}
                 }}>
-                    <Box sx={{display:{xs:'flex',md:'block'},marginTop:'4px'}}>
+                    <Box className="order-details-field" sx={{display:{xs:'flex',md:'block'},marginTop:'4px'}}>
                         <Typography level='body-md' >
                            رقم الطلب:
                         </Typography>
-                        <Typography level='body-lg'>
+                        <Typography className="order-detail-value" level='body-lg'>
                           #{orderId}
                         </Typography>
                     </Box>
-                    <Box sx={{display:{xs:'flex',md:'block'},marginTop:'4px'}}>
+                    <Box className="order-details-field" sx={{display:{xs:'flex',md:'block'},marginTop:'4px'}}>
                         <Typography level='body-md'>
                            تاريخ الطلب:
                         </Typography>
-                        <Typography level='body-lg'>
+                        <Typography className="order-detail-value" level='body-lg'>
                           {date}
                         </Typography>
                     </Box>
-                    <Box sx={{display:{xs:'flex',md:'block'},marginTop:'4px'}}>
+                    <Box className="order-details-field" sx={{display:{xs:'flex',md:'block'},marginTop:'4px'}}>
                         <Typography level='body-md'>
                            حالة الطلب:
                         </Typography>

@@ -8,7 +8,7 @@ export function OrderProducts({items,total,subPrice,deliveryFees,serviceFees})
     
     const OrderItems = items.map((item,index)=>{
 
-        return  <Box sx={{
+        return  <Box className="order-detail-item" sx={{
                         display:'flex',
                         flexDirection:'column',
                         gap:'5px',
@@ -22,7 +22,7 @@ export function OrderProducts({items,total,subPrice,deliveryFees,serviceFees})
                         <Typography level='body-sm'>
                             الكمية : {item.quantity}
                         </Typography>
-                        <Typography level='title-lg' sx={{marginRight:'auto'}}>
+                        <Typography className="order-detail-value" level='title-lg' sx={{marginRight:'auto'}}>
                             {item.price} jd
                         </Typography>
                     </Box>
@@ -37,13 +37,11 @@ export function OrderProducts({items,total,subPrice,deliveryFees,serviceFees})
             alignItems:'center',
             marginTop:'25px'
             }}>
-                <Box sx={{
-                    width:'90%',
-                    padding:'15px 15px',
-                    boxShadow:'2px 3px 0.5px black',
-                    borderRadius:'8px',
-                    border:'1px solid black',
-                    direction:'rtl'
+                <Box className="order-details-card" sx={{
+                    width:'min(90%, 1100px)',
+                    padding:'clamp(16px, 3vw, 24px)',
+                    direction:'rtl',
+                    textAlign:'right'
                 }}
                 >
                   <Typography level="h4">
@@ -65,7 +63,7 @@ export function OrderProducts({items,total,subPrice,deliveryFees,serviceFees})
                         <Typography level="title-lg">
                             سعر المنتجات:
                         </Typography>
-                        <Typography level="title-md" sx={{marginRight:'auto'}}>
+                        <Typography className="order-detail-value" level="title-md" sx={{marginRight:'auto'}}>
                             {subPrice} jd
                         </Typography>
                     </Box>
@@ -77,7 +75,7 @@ export function OrderProducts({items,total,subPrice,deliveryFees,serviceFees})
                         <Typography level="title-lg">
                             سعر التوصيل:
                         </Typography>
-                        <Typography level="title-md" sx={{marginRight:'auto'}}>
+                        <Typography className="order-detail-value" level="title-md" sx={{marginRight:'auto'}}>
                             {deliveryFees} jd
                         </Typography>
                     </Box>
@@ -90,7 +88,7 @@ export function OrderProducts({items,total,subPrice,deliveryFees,serviceFees})
                         <Typography level="title-lg">
                             سعر الخدمة :
                         </Typography>
-                        <Typography level="title-md" sx={{marginRight:'auto'}}>
+                        <Typography className="order-detail-value" level="title-md" sx={{marginRight:'auto'}}>
                             {serviceFees} jd
                         </Typography>
                     </Box>
@@ -102,7 +100,7 @@ export function OrderProducts({items,total,subPrice,deliveryFees,serviceFees})
                         <Typography level="title-lg">
                             الأجمالي:
                         </Typography>
-                        <Typography level="title-lg" sx={{marginRight:'auto',backgroundColor:'aqua'}}>
+                        <Typography className="order-detail-value" level="title-lg" sx={{marginRight:'auto',backgroundColor:'rgba(8, 176, 176, 0.12)'}}>
                             {total} jd
                         </Typography>
                     </Box>

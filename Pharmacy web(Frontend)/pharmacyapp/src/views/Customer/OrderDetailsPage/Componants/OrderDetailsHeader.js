@@ -53,6 +53,7 @@ export function OrderDetailsHeader({ statusId, handelStatusChange }) {
 
   return (
     <Box
+      className="order-details-title-row"
       sx={{
         direction: "rtl",
         display: "flex",
@@ -77,7 +78,7 @@ export function OrderDetailsHeader({ statusId, handelStatusChange }) {
           <Button
             sx={{
               padding: "5px 5px",
-              backgroundColor: "aqua",
+              backgroundColor: "rgba(8, 176, 176, 0.12)",
               fontSize: "16px",
               borderRadius: "8px",
               color: "black",

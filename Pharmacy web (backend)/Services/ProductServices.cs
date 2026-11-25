@@ -446,5 +446,21 @@ namespace Services
             return products;
         }
 
+        public async Task<List<ListingProductDTO>> GetAllPharmacyProductsForAiSearch()
+        {
+            return await _context.PhPramacyProducts
+                                 .AsNoTracking()
+                                 .Select(p => new ListingProductDTO()
+                                 {
+                                     PhProductId = p.PhProductId,
+                                     Name = p.SysProduct.ProductName,
+                                     Price = p.Price,
+                                     ProductImageURL = p.SysProduct.ImageURL,
+                                     PhName = p.Pharmacy.ArabicName,
+                                     PharmacyId = p.PharamcyId
+                                 })
+                                 .ToListAsync();
+        }
+
     }
 }

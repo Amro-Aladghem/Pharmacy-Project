@@ -47,7 +47,7 @@ export function ProductDescription()
     }
 
     return(
-         <Accordion expanded={expanded} onChange={()=>handelChange()} sx={{width:'100%'}}>
+         <Accordion className="product-description-accordion" expanded={expanded} onChange={()=>handelChange()} sx={{width:'100%'}}>
                          <AccordionSummary
                              expandIcon={<ExpandMoreIcon />}
                              aria-controls="panel1-content"

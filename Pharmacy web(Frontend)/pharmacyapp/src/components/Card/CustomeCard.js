@@ -15,7 +15,19 @@ export function CustomeCard({ image, body, page }) {
       size={{ xs: 6, md: 4 }}
       sx={{ display: "flex", justifyContent: "center" }}
     >
-      <Card sx={{ width: { xs: "140px", sm: "320px", md: "320px" } }}>
+      <Card
+        variant="outlined"
+        sx={{
+          width: { xs: "150px", sm: "320px", md: "320px" },
+          borderRadius: "var(--radius-lg)",
+          borderColor: "var(--border)",
+          boxShadow: "var(--shadow-sm)",
+          overflow: "hidden",
+          transition: "box-shadow 0.2s",
+          "&:hover": { boxShadow: "var(--shadow-md)" },
+          "& .MuiAspectRatio-root": { borderRadius: 0 },
+        }}
+      >
         <AspectRatio minHeight="120px" maxHeight="200px">
           <img src={image} alt="" />
         </AspectRatio>
@@ -34,8 +46,9 @@ export function CustomeCard({ image, body, page }) {
               ml: "auto",
               alignSelf: "center",
               fontWeight: 600,
-              backgroundColor: "rgb(8, 176, 176)",
+              backgroundColor: "var(--teal)",
               color: "white",
+              borderRadius: "var(--radius-md)",
             }}
             onClick={() => navigate(page)}
           >

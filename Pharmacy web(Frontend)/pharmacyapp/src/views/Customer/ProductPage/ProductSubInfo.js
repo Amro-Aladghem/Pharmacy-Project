@@ -82,9 +82,11 @@ export function ProductSubInfo({ info }) {
 
   return (
     <>
-      <Link style={{ width: "100%" }} to={`/pharmacies/${info.pharmacyId}`}>
+      <section className="product-pharmacy-section">
+      <Link className="product-pharmacy-link" to={`/pharmacies/${info.pharmacyId}`}>
         <Card
           id="pharmacy-card"
+          className="product-pharmacy-card"
           variant="outlined"
           orientation="horizontal"
           sx={{
@@ -96,7 +98,7 @@ export function ProductSubInfo({ info }) {
             },
           }}
         >
-          <AspectRatio ratio="1" sx={{ width: 90 }}>
+          <AspectRatio ratio="1" sx={{ width: 84, borderRadius: "14px", overflow: "hidden" }}>
             <img src={info.Image} loading="lazy" alt="" />
           </AspectRatio>
 
@@ -117,7 +119,7 @@ export function ProductSubInfo({ info }) {
         </Card>
       </Link>
 
-      <div id="check-delivery-container">
+      <div id="check-delivery-container" className="product-delivery-check">
         <Typography level="title-lg" id="card-description">
           <DeliveryDiningIcon />
           تحقق من رسوم التوصيل لمنطقتك
@@ -137,12 +139,19 @@ export function ProductSubInfo({ info }) {
           </div>
         </button>
       </div>
+      </section>
 
-      <ProductDescription />
+      <section className="product-description-section">
+        <ProductDescription />
+      </section>
 
-      <h2>تعرف على منتجات اخرى من الصيدلية</h2>
+      <section className="product-recommendations-section">
+      <div className="product-recommendations-heading">
+        <span>من نفس الصيدلية</span>
+        <h2>منتجات أخرى قد تهمك</h2>
+      </div>
 
-      <div id="ph-products-container">
+      <div id="ph-products-container" className="product-recommendations-list">
         {loading ? (
           <CircularProgress size={40} />
         ) : !result ? (
@@ -161,6 +170,7 @@ export function ProductSubInfo({ info }) {
           </>
         )}
       </div>
+      </section>
     </>
   );
 }

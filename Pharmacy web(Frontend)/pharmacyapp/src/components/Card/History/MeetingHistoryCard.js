@@ -29,7 +29,7 @@ export function MeetingHistoryCard({
       <Typography
         level="h3"
         variant="plain"
-        sx={{ backgroundColor: "rgb(2, 205, 205)", width: "fit-content" }}
+        sx={{ backgroundColor: "rgba(8, 176, 176, 0.12)", width: "fit-content" }}
       >
         حالة الأستشارة : {StatusName}
       </Typography>

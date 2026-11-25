@@ -53,7 +53,13 @@ export function TapsBar() {
 
   return (
     <>
-      <Box sx={{ bgcolor: "background.paper", direction: "rtl" }}>
+      <Box
+        sx={{
+          bgcolor: "var(--surface)",
+          direction: "rtl",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
         <Tabs
           value={value}
           onChange={handleChange}
@@ -62,11 +68,21 @@ export function TapsBar() {
           allowScrollButtonsMobile
           aria-label=""
           sx={{
-            "& .MuiTab-root": { color: "black" },
-            "& .MuiTab-root.Mui-selected": { color: "rgb(255, 86, 114)" },
+            minHeight: 48,
+            "& .MuiTab-root": {
+              color: "var(--ink-muted)",
+              fontWeight: 600,
+              minHeight: 48,
+              textTransform: "none",
+            },
+            "& .MuiTab-root.Mui-selected": { color: "var(--brand)" },
           }}
           TabIndicatorProps={{
-            style: { backgroundColor: "rgb(255, 86, 114)", height: "2px" },
+            style: {
+              backgroundColor: "var(--brand)",
+              height: "3px",
+              borderRadius: "3px 3px 0 0",
+            },
           }}
         >
           {tabsData.map((tap, index) => {

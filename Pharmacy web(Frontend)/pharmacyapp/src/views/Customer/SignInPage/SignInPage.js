@@ -1,7 +1,7 @@
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
-import "./SignInPage.css";
+import "../../../assets/Styles/CustomerAuth.css";
 import { useState, useEffect } from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
@@ -97,19 +97,38 @@ export function SignInPage() {
   }, []);
 
   return (
-    <div id="sign-in-container">
-      <div id="sign-in-form">
-        <h1>تسجيل الدخول</h1>
-        <MeetingRoomIcon sx={{ color: "rgb(5, 197, 197)" }} fontSize="large" />
+    <main id="sign-in-container" className="customer-auth-layout signin-layout" dir="rtl">
+      <aside className="customer-auth-intro">
+        <img src="/MainLogo.png" alt="PharmaPal" />
+        <span>مرحبًا بعودتك</span>
+        <h2>صحتك أقرب مع PharmaPal</h2>
+        <p>تابع طلباتك، واستكشف المنتجات والخدمات من الصيدليات بكل سهولة.</p>
+        <div className="customer-auth-highlights">
+          <span>منتجات صيدلانية متنوعة</span>
+          <span>صيدليات وخدمات قريبة منك</span>
+          <span>متابعة الطلبات والاستشارات</span>
+        </div>
+      </aside>
+
+      <section id="sign-in-form" className="customer-auth-card">
+        <div className="customer-auth-heading">
+          <span className="customer-auth-icon"><MeetingRoomIcon /></span>
+          <div>
+            <span>حساب PharmaPal</span>
+            <h1>تسجيل الدخول</h1>
+            <p>أدخل بريدك الإلكتروني وكلمة المرور للمتابعة.</p>
+          </div>
+        </div>
         <form
           onSubmit={(event) => {
             event.preventDefault();
           }}
         >
           <TextField
+            dir="rtl"
             value={email}
             id="email-input"
-            label="Eamil"
+            label="البريد الإلكتروني"
             type="email"
             variant="outlined"
             fullWidth
@@ -120,8 +139,9 @@ export function SignInPage() {
             }}
           />
           <TextField
+            dir="rtl"
             value={password}
-            label="Password"
+            label="كلمة المرور"
             type={showPassword ? "text" : "password"}
             variant="outlined"
             fullWidth
@@ -130,7 +150,7 @@ export function SignInPage() {
             slotProps={{
               input: {
                 endAdornment: (
-                  <InputAdornment position="end">
+                    <InputAdornment position="start">
                     <IconButton
                       sx={{ width: "fit-content" }}
                       onClick={handleTogglePassword}
@@ -163,18 +183,20 @@ export function SignInPage() {
             </div>
           </Button>
         </form>
-        <div id="more-info">
-          <h6 style={{ display: "inline" }}>هل نسيت كلمة السر؟</h6>
-          <a href="/">الدعم الفني</a>
-          <h6 style={{ marginTop: "6px", marginBottom: "1px" }}>
-            مستخدم جديد أول مرة؟
-          </h6>
-          <a href="/">تسجيل الدخول أول مرة</a>
+        <div id="more-info" className="customer-auth-links">
+          <div className="customer-auth-support">
+            <h6>هل نسيت كلمة السر؟</h6>
+            <a href="/">الدعم الفني</a>
+          </div>
+          <div className="customer-auth-new-user">
+            <span>مستخدم جديد أول مرة؟</span>
+            <a href="/">تسجيل الدخول أول مرة</a>
+          </div>
         </div>
 
         {IsLoading ? <MainLoader top="50%" left="40%" /> : null}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 

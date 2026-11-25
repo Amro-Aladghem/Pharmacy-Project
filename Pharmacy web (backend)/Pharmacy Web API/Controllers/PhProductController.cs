@@ -1,4 +1,5 @@
 ﻿using DatabaseLayer.Entities;
+using DTOs.AIDTOs;
 using DTOs.ProductDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.Identity.Client;
 using Services;
+using Services.Coordinators;
 using System.Reflection.Metadata;
 using static Services.TokenServices;
 
@@ -19,14 +21,17 @@ namespace Pharmacy_Web_API.Controllers
         private readonly FileUploadService _fileUploadService;
         private readonly PharmacyServices _pharmacyServices;
         private readonly ProductServices _productServices;
+        private readonly ProductSearchCoordinator _productSearchCoordinator;
 
         public PhProductController(TokenServices tokenServices, FileUploadService fileUploadService,
-            PharmacyServices pharmacyServices, ProductServices productServices)
+            PharmacyServices pharmacyServices, ProductServices productServices,
+            ProductSearchCoordinator productSearchCoordinator)
         {
             _tokenServices = tokenServices;
             _fileUploadService = fileUploadService;
             _pharmacyServices = pharmacyServices;
             _productServices = productServices;
+            _productSearchCoordinator = productSearchCoordinator;
         }
 
         [HttpPost("add")]
@@ -410,6 +415,28 @@ namespace Pharmacy_Web_API.Controllers
             catch
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Faild to get Data, Server Error!" });
+            }
+        }
+
+        [HttpPost("ai-search")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> SearchProductsWithAi([FromBody] AiProductSearchRequestDTO request)
+        {
+            if (request is null || string.IsNullOrWhiteSpace(request.Message))
+            {
+                return BadRequest(new { message = "Invalied or empty values!" });
+            }
+
+            try
+            {
+                var result = await _productSearchCoordinator.SearchProductsAsync(request.Message);
+                return Ok(result);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Faild to get AI response, Server Error!" });
             }
         }
 

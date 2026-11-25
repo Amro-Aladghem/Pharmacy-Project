@@ -32,7 +32,7 @@ export function PaymentSummery({serviceFees,subFees,deliveryFees,totalFees})
                         سعر المنتجات:
                     </Typography>
                     <Typography level='body-lg' sx={{
-                            backgroundColor:'aqua',
+                            backgroundColor:'rgba(8, 176, 176, 0.12)',
                             marginRight:"auto",
                             borderRadius:'10px',
                             padding:'6px 6px'
@@ -46,7 +46,7 @@ export function PaymentSummery({serviceFees,subFees,deliveryFees,totalFees})
                         سعر التوصيل:
                     </Typography>
                     <Typography level='body-lg' sx={{
-                            backgroundColor:'aqua',
+                            backgroundColor:'rgba(8, 176, 176, 0.12)',
                             marginRight:"auto",
                             borderRadius:'10px',
                             padding:'6px 6px'
@@ -60,7 +60,7 @@ export function PaymentSummery({serviceFees,subFees,deliveryFees,totalFees})
                         سعر الخدمة:
                     </Typography>
                     <Typography level='body-lg' sx={{
-                            backgroundColor:'aqua',
+                            backgroundColor:'rgba(8, 176, 176, 0.12)',
                             marginRight:"auto",
                             borderRadius:'10px',
                             padding:'6px 6px'

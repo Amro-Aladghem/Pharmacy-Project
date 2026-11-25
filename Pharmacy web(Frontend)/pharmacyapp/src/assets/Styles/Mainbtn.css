@@ -7,9 +7,9 @@
     --arrow-stroke: 2px;
     box-sizing: border-box;
     border: 0;
-    border-radius: 20px;
+    border-radius: var(--radius-md);
     color: var(--secondary-color);
-    padding: 1em 1.8em;
+    padding: 0.9em 1.6em;
     background: var(--primary-color);
     display: flex;
     transition: 0.2s background;

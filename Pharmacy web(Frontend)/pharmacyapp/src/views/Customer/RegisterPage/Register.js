@@ -3,7 +3,7 @@ import MapComponent from "../../../components/MapComponent";
 import RegisterFormInfo from "./RegisterFormInfo";
 import MainLoader from "../../../components/MainLoader";
 import Grid from "@mui/material/Grid2";
-import "./Register.css";
+import "../../../assets/Styles/CustomerAuth.css";
 import { Button } from "@mui/material";
 import { Registerfunc } from "../../../services/customerServices";
 import { useAuth } from "../../../contexts/AuthContext";
@@ -105,14 +105,30 @@ export function Register() {
   return (
     <>
       {!hasAccess ? (
-        <h1>You can't use this page!</h1>
+        <main className="customer-auth-page customer-register-page" dir="rtl">
+          <div className="customer-auth-card customer-register-error">
+            <h1>لا يمكنك استخدام هذه الصفحة</h1>
+          </div>
+        </main>
       ) : (
-        <>
-          <Grid className="Register-container" container spacing={6}>
-            <Grid item size={{ xs: 12, md: 6 }}>
+        <main className="customer-auth-page customer-register-page" dir="rtl">
+          <header className="customer-register-heading">
+            <span>الخطوة ٢ من ٢</span>
+            <h1>أكمل معلومات حسابك</h1>
+            <p>أدخل بيانات التواصل وحدد موقعك لإتمام التسجيل.</p>
+          </header>
+
+          <Grid className="Register-container customer-register-grid" container spacing={{ xs: 2, md: 3 }}>
+            <Grid className="customer-register-map-column" size={{ xs: 12, md: 6 }}>
+              <section className="customer-register-map-card">
+                <div className="customer-register-card-heading">
+                  <h2>حدد موقعك</h2>
+                  <p>يساعدنا موقعك على ربطك بالخدمات القريبة.</p>
+                </div>
               <MapComponent Info={Info} handler={{ setInfo }} />
+              </section>
             </Grid>
-            <Grid id="RegisterForm-container" size={{ xs: 12, md: 6 }}>
+            <Grid id="RegisterForm-container" className="customer-register-form-column" size={{ xs: 12, md: 6 }}>
               <RegisterFormInfo Info={Info} handlers={{ setInfo }} />
             </Grid>
           </Grid>
@@ -129,13 +145,13 @@ export function Register() {
                 handelRegisterClicked();
               }}
             >
-              تسجيل الدخول
+              إنشاء الحساب
               <div className="arrow-wrapper">
                 <div className="arrow"></div>
               </div>
             </Button>
           </div>
-        </>
+        </main>
       )}
     </>
   );

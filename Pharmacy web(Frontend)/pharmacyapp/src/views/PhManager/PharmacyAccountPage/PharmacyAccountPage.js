@@ -9,6 +9,7 @@ import { usePhUserAuth } from "../../../contexts/PhUserAuthContext";
 import UnAuthorized from "../../../components/PhUsersComponents/UnAuthorized/UnAuthorized";
 import { Box } from "@mui/material";
 import { GetPharmacySummeryInfo } from "../../../services/pharmacyServices";
+import "./PharmacyAccountPage.css";
 
 export default function PharmacyAccountPage() {
   const [loading, setLoading] = useState(true);
@@ -42,9 +43,10 @@ export default function PharmacyAccountPage() {
 
   return (
     <Box
+      className="manager-pharmacy-account"
       sx={{
-        marginLeft: { xs: "0px", md: "63px" },
-        marginTop: { xs: "70px", md: "100px" },
+        marginLeft: { xs: "0px", md: "72px" },
+        marginTop: { xs: "76px", md: "92px" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -60,10 +62,11 @@ export default function PharmacyAccountPage() {
         <>
           <Card
             id="pharmacy-card"
+            className="manager-pharmacy-summary"
             variant="outlined"
             orientation="horizontal"
             sx={{
-              width: "95%",
+              width: "min(100%, 1080px)",
               margin: "14px 0px",
               "&:hover": {
                 boxShadow: "md",
@@ -78,7 +81,7 @@ export default function PharmacyAccountPage() {
             </AspectRatio>
 
             <CardContent>
-              <Typography level="h1" id="card-description">
+              <Typography level="h2" id="card-description">
                 صيدلية {info.name}
               </Typography>
             </CardContent>

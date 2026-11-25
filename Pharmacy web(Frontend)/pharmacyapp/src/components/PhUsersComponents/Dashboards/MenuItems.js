@@ -24,7 +24,7 @@ export const MenuItems = [
   },
   {
     icon: <VaccinesIcon sx={{ color: "rgb(255, 86, 114)" }} />,
-    text: "الأدوية والمنجات",
+    text: "الأدوية والمنتجات",
     to: "products",
   },
   {
@@ -35,6 +35,7 @@ export const MenuItems = [
   {
     icon: <Person2Icon sx={{ color: "rgb(255, 86, 114)" }} />,
     text: "حسابك",
+    to: "ph/account",
   },
   {
     icon: <SupportAgentIcon sx={{ color: "rgb(255, 86, 114)" }} />,

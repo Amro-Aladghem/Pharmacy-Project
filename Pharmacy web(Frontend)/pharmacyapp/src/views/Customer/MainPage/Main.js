@@ -1,8 +1,6 @@
-import Navbar from "../../../components/Navbar/Navbar";
 import Carousel from "../../../components/Carousel";
 import CustomeCard from "../../../components/Card/CustomeCard";
 import Typography from "@mui/joy/Typography";
-import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import HorizontalCard from "../../../components/Card/Horizontal/HorizontalCard";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
@@ -10,6 +8,7 @@ import "./Main.css";
 import PopularProduct from "./PopularProduct/PopularProduct";
 import RandomPharmacies from "./RandomPharmacies/RandomPharmacies";
 import { useNavigate } from "react-router-dom";
+import AiChatWidget from "../../../components/AiChatWidget/AiChatWidget";
 
 const cards = [
   {
@@ -44,58 +43,85 @@ export function Main() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ direction: "rtl" }}>
-      <Carousel />
+    <div className="customer-home" style={{ direction: "rtl" }}>
+      <section className="home-banner">
+        <Carousel />
+      </section>
 
-      <Box sx={{ textAlign: "center" }}>
+      <header className="home-intro">
+        <span className="home-eyebrow">رعاية صحية أقرب إليك</span>
         <Typography level="h1">عالم الصيدليات بين يديك</Typography>
-      </Box>
-
-      <Grid sx={{ my: 2, marginBottom: "50px" }} container spacing={2}>
-        {cardsList}
-      </Grid>
-
-      <HorizontalCard Type="Order" title="طلباتك النشطة" />
-      <HorizontalCard Type="Request" title="موعد مكالمة نشط" />
-
-      <Box sx={{ textAlign: "center", mt: "20px" }}>
-        <Typography level="h2" alignSelf={"center"}>
-          ابحث عن أقرب صيدلية لموقعك
+        <Typography level="body-lg" className="home-intro-copy">
+          اكتشف الصيدليات والمنتجات والخدمات المتاحة من مكان واحد.
         </Typography>
-        <PersonPinIcon />
-      </Box>
+      </header>
 
-      <div id="Nearer-Ph-section-container">
-        <div id="Nearer-Ph-section">
-          <img id="Nearer-section-img" src="pharmacylocation.png" alt="" />
+      <section className="home-section home-services">
+        <div className="home-section-heading">
+          <span className="home-eyebrow">ابدأ من هنا</span>
+          <Typography level="h2">الخدمات المتاحة لك</Typography>
+        </div>
+        <Grid container spacing={{ xs: 1.5, md: 2.5 }}>
+          {cardsList}
+        </Grid>
+      </section>
 
-          <div id="Nearer-section-body">
-            <Typography level="h4" sx={{ mb: "30px" }}>
-              صيدليات قريبةوتوصيل سريع
-            </Typography>
+      <section className="home-activity-grid">
+        <HorizontalCard Type="Order" title="طلباتك النشطة" />
+        <HorizontalCard Type="Request" title="موعد مكالمة نشط" />
+      </section>
 
-            <button
-              className="main-btn"
-              onClick={() => {
-                navigate("/pharmacies/nearest");
-              }}
-            >
-              الذهاب
-              <div className="arrow-wrapper">
-                <div className="arrow"></div>
-              </div>
-            </button>
+      <section className="home-nearest-section">
+        <div className="home-section-heading">
+          <span className="home-eyebrow">قريب منك</span>
+          <Typography level="h2" alignSelf={"center"}>
+            ابحث عن أقرب صيدلية لموقعك
+          </Typography>
+          <PersonPinIcon />
+        </div>
+
+        <div id="Nearer-Ph-section-container">
+          <div id="Nearer-Ph-section">
+            <img id="Nearer-section-img" src="/pharmacylocation.png" alt="" />
+
+            <div id="Nearer-section-body">
+              <Typography level="h4" sx={{ mb: "12px", color: "#20252b" }}>
+                صيدليات قريبة وتوصيل سريع
+              </Typography>
+
+              <button
+                className="main-btn"
+                onClick={() => {
+                  navigate("/pharmacies/nearest");
+                }}
+              >
+                الذهاب
+                <div className="arrow-wrapper">
+                  <div className="arrow"></div>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <Typography level="h3">الأدوية والمنتجات الأكثر شيوعا : </Typography>
+      <section className="home-section">
+        <div className="home-section-heading">
+          <span className="home-eyebrow">اختيارات متاحة</span>
+          <Typography level="h2">الأدوية والمنتجات الأكثر شيوعًا</Typography>
+        </div>
+        <PopularProduct />
+      </section>
 
-      <PopularProduct />
+      <section className="home-section">
+        <div className="home-section-heading">
+          <span className="home-eyebrow">اكتشف من حولك</span>
+          <Typography level="h2">اكتشف الصيدليات ومنتجاتها</Typography>
+        </div>
+        <RandomPharmacies />
+      </section>
 
-      <Typography level="h3"> اكتشف الصيديلات ومنتجاتها: </Typography>
-
-      <RandomPharmacies />
+      <AiChatWidget />
     </div>
   );
 }

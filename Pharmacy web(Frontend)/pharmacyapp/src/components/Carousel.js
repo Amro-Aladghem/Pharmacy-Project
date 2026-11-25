@@ -24,7 +24,7 @@ export function Carousel()
     return (
         <>
        
-              <Box sx={{ width: '100%', height: {xs:'120px',sm:'250px',md:'320px'},my:1,direction:'ltr'}}>
+              <Box sx={{ width: '100%', maxWidth: 1100, aspectRatio: '851 / 315', height: 'auto', mx: 'auto', my:1, direction:'ltr', position:'relative', overflow:'hidden', borderRadius:'var(--radius-lg)', boxShadow:'var(--shadow-md)', backgroundColor:'var(--surface)'}}>
                 {images.map((src, index) => (
                 <Box
                     key={index}
@@ -32,14 +32,14 @@ export function Carousel()
                     src={src}
                     alt={`Slide ${index}`}
                     sx={{
-                    width: '65%',
-                    height: 'auto',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
                     position: 'absolute',
-                    marginLeft: '50%',
-                    transform: 'translateX(-50%)',
+                    top: 0,
+                    left: 0,
                     opacity: index == current ? 1 : 0,
                     transition: 'opacity 1s ease-in-out',
-                    borderRadius:"8px"
                     }}
                     display='block'
                 />

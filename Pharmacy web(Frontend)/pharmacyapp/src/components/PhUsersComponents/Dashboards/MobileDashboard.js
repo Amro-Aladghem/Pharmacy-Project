@@ -14,11 +14,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import NavbarContent from "../NavbarContent/NavbarContent";
 import { MenuItems } from "./MenuItems";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -30,6 +31,7 @@ function MobileDashboard(props) {
   const [isClosing, setIsClosing] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -54,8 +56,25 @@ function MobileDashboard(props) {
         {menuItems.map((Item, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton
+              selected={Boolean(Item.to) && location.pathname.endsWith(Item.to)}
+              disabled={!Item.to}
+              sx={{
+                mx: 1,
+                my: 0.25,
+                borderRadius: "var(--radius-md)",
+                "&.Mui-selected": {
+                  backgroundColor: "var(--brand-soft)",
+                  color: "var(--brand)",
+                  fontWeight: 700,
+                },
+                "&.Mui-selected:hover": {
+                  backgroundColor: "var(--brand-soft)",
+                },
+              }}
               onClick={() => {
-                navigate(Item.to);
+                if (!Item.to) return;
+                navigate(`/manager/dashboard/${Item.to}`);
+                handleDrawerClose();
               }}
             >
               <ListItemIcon>{Item.icon}</ListItemIcon>
@@ -76,21 +95,30 @@ function MobileDashboard(props) {
       <CssBaseline />
       <AppBar
         position="fixed"
+        elevation={0}
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "rgb(255, 86, 114)",
+          width: "100%",
+          backgroundColor: "var(--brand)",
+          boxShadow: "var(--shadow-sm)",
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ minHeight: "68px !important", px: 2, gap: 1.5 }}>
           <IconButton
             color="inherit"
-            aria-label="open drawer"
+            aria-label={mobileOpen ? "إغلاق القائمة" : "فتح القائمة"}
+            aria-expanded={mobileOpen}
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{
+              width: 44,
+              height: 44,
+              flex: "0 0 44px",
+              borderRadius: "12px",
+              backgroundColor: "rgba(255,255,255,0.14)",
+              "&:hover": { backgroundColor: "rgba(255,255,255,0.24)" },
+            }}
           >
-            <MenuIcon />
+            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
 
           <NavbarContent />
@@ -98,7 +126,7 @@ function MobileDashboard(props) {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: "auto", flexShrink: 0 }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -109,10 +137,11 @@ function MobileDashboard(props) {
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: "block",
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              borderRight: "1px solid var(--border)",
             },
           }}
           slotProps={{
@@ -120,19 +149,6 @@ function MobileDashboard(props) {
               keepMounted: true, // Better open performance on mobile.
             },
           }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-          open
         >
           {drawer}
         </Drawer>

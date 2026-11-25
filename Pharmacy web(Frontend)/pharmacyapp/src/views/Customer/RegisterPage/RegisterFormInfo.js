@@ -1,5 +1,4 @@
 import { TextField } from "@mui/material";
-import "./RegisterFormInfo.css";
 import ContactEmergencyIcon from "@mui/icons-material/ContactEmergency";
 import { InputAdornment } from "@mui/material";
 import Button from "@mui/material";
@@ -18,18 +17,23 @@ export function RegisterFormInfo({ Info, handlers }) {
   }
 
   return (
-    <div id="sign-up-form-register">
-      <h1> أخر خطوة معلومات عنك</h1>
-      <ContactEmergencyIcon
-        sx={{ color: "rgb(5, 197, 197)" }}
-        fontSize="large"
-      />
+    <section id="sign-up-form-register" className="customer-auth-card customer-register-form">
+      <div className="customer-auth-heading">
+        <span className="customer-auth-icon"><ContactEmergencyIcon /></span>
+        <div>
+          <span>معلومات الحساب</span>
+          <h1>بياناتك الشخصية</h1>
+          <p>أكمل معلومات التواصل المطلوبة للتسجيل.</p>
+        </div>
+      </div>
       <form
+        className="customer-register-fields"
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
         <TextField
+          dir="rtl"
           value={Info.FirstName}
           id="FirstName-input"
           label="اسمك الأول"
@@ -44,6 +48,7 @@ export function RegisterFormInfo({ Info, handlers }) {
           }}
         />
         <TextField
+          dir="rtl"
           value={Info.LastName}
           id="LastName-input"
           label="اسم العائلة"
@@ -58,6 +63,7 @@ export function RegisterFormInfo({ Info, handlers }) {
           }}
         />
         <TextField
+          dir="rtl"
           value={Info.Phone}
           id="Phone-input"
           label="رقم هاتفك للتواصل"
@@ -81,9 +87,10 @@ export function RegisterFormInfo({ Info, handlers }) {
           }}
         />
         <TextField
+          dir="rtl"
           value={Info.Email}
           id="Eamil-Input"
-          label="Email"
+          label="البريد الإلكتروني"
           type="Email"
           variant="outlined"
           fullWidth
@@ -93,7 +100,7 @@ export function RegisterFormInfo({ Info, handlers }) {
           disabled={true}
         />
       </form>
-    </div>
+    </section>
   );
 }
 

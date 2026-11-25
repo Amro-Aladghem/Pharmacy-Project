@@ -5,13 +5,13 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { Button } from "@mui/material";
 import "./UpperNavbar.css";
 import Badge from "@mui/material/Badge";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import { useEffect, useState } from "react";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useContext } from "react";
@@ -20,10 +20,11 @@ import { useAuth } from "../../contexts/AuthContext";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  borderRadius: 12,
+  backgroundColor: "#f3f6f7",
+  border: "1px solid #e5eaec",
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: "#edf2f3",
   },
   marginLeft: 0,
   width: "70%",
@@ -47,7 +48,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   direction: "rtl",
-  color: "black",
+  color: "#20252b",
   width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
@@ -64,11 +65,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const menustyle = {
-  my: "2",
   display: "block",
-  fontSize: "large",
-  marginRight: "16px",
-  color: "black",
+  fontSize: "0.95rem",
+  fontWeight: 600,
+  mx: 0.25,
+  px: 1.25,
+  borderRadius: "10px",
+  color: "#424b52",
+  "&:hover": { backgroundColor: "rgba(8, 176, 176, 0.08)", color: "#087f7f" },
 };
 
 const pages = [
@@ -97,27 +101,81 @@ export function UpperNavbar() {
     );
   });
 
-  useEffect(() => {}, []);
-
   return (
-    <Box id="Upper-nav-contnier">
+    <Box id="Upper-nav-contnier" className="customer-header">
       <AppBar
-        position="static"
-        sx={{ backgroundColor: "rgb(255, 86, 114)", width: "100%" }}
+        position="sticky"
+        elevation={0}
+        sx={{
+          backgroundColor: "rgba(255,255,255,0.96)",
+          width: "100%",
+          color: "#20252b",
+          boxShadow: "0 4px 18px rgba(27, 39, 51, 0.07)",
+          backdropFilter: "blur(12px)",
+          zIndex: 1100,
+        }}
       >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            MUI
-          </Typography>
-          <Box sx={{ flexGrow: 15, display: { xs: "none", md: "flex" } }}>
+        <Toolbar
+          sx={{
+            minHeight: { xs: "auto", md: 78 },
+            py: { xs: 1, md: 0 },
+            px: { xs: 1.5, md: 4 },
+            gap: { xs: 1, md: 2 },
+            flexWrap: { xs: "wrap", md: "nowrap" },
+            maxWidth: 1480,
+            width: "100%",
+            mx: "auto",
+            boxSizing: "border-box",
+          }}
+        >
+          <Box
+            component="button"
+            type="button"
+            onClick={() => navigate("/")}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              cursor: "pointer",
+              p: 0,
+              border: 0,
+              background: "transparent",
+              flexShrink: 0,
+              ml: { xs: "auto", md: 1 },
+            }}
+          >
+            <img
+              src="/MainLogo.png"
+              alt="شعار الصيدلية"
+              style={{ width: 54, height: 54, objectFit: "contain" }}
+            />
+            <Box sx={{ display: { xs: "none", sm: "block" }, textAlign: "right" }}>
+              <Typography sx={{ color: "#222a30", fontWeight: 800, fontSize: 19, lineHeight: 1.35, direction: "ltr" }}>
+                PharmaPal
+              </Typography>
+              <Typography sx={{ color: "#75818a", fontSize: 11, lineHeight: 1.3 }}>
+                صحتك أولويتنا
+              </Typography>
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {pagesList}
 
             <IconButton
               onClick={() => navigate("/cart")}
-              sx={{ marginRight: "16px" }}
+              aria-label="سلة المشتريات"
+              sx={{ mr: 1, color: "#087f7f" }}
             >
               <Badge badgeContent={itemsCount} color="secondary">
-                <ShoppingBagIcon sx={{ color: "rgb(2, 205, 205)" }} />
+                <ShoppingBagIcon />
               </Badge>
             </IconButton>
 
@@ -126,37 +184,64 @@ export function UpperNavbar() {
                 navigate(authInfo.loggedIn ? "/customer/profile" : "/signin")
               }
             >
-              <img
-                id="Upper-nav-img"
-                src="https://res.cloudinary.com/dlu3aolnh/image/upload/v1735059932/udjkg3nflplvydkrngf0.png"
-                alt=""
-              />
-              <span style={{ color: "black" }}>
+              <AccountCircleOutlinedIcon sx={{ fontSize: 28, color: "#65717a" }} />
+              <span style={{ color: "#424b52", fontWeight: 700 }}>
                 {authInfo.loggedIn ? authInfo.userName : "تسجيل الدخول"}
               </span>
             </Button>
           </Box>
 
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="ابحث باسم دواء"
-              inputProps={{ "aria-label": "search" }}
-              value={searchtext}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-          </Search>
-          <IconButton
-            disabled={searchtext == "" || searchtext == null}
-            onClick={() => {
-              navigate(`/search?searchtext=${searchtext}`);
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 0.75,
+              flexGrow: { xs: 1, md: 0 },
+              order: { xs: 3, md: 0 },
+              width: { xs: "100%", md: "auto" },
+              minWidth: { md: 310 },
             }}
-            sx={{ backgroundColor: "rgb(2, 205, 205)", mx: 1, color: "white" }}
           >
-            <ArrowBackIcon size="small" />
-          </IconButton>
+            <Search sx={{ width: "100%", flexGrow: 1 }}>
+              <SearchIconWrapper>
+                <SearchIcon sx={{ color: "#73808a" }} />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="ابحث باسم دواء"
+                inputProps={{ "aria-label": "search" }}
+                value={searchtext}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+            </Search>
+            <IconButton
+              disabled={searchtext == "" || searchtext == null}
+              onClick={() => {
+                navigate(`/search?searchtext=${searchtext}`);
+              }}
+              sx={{
+                backgroundColor: "#08b0b0",
+                color: "white",
+                borderRadius: "10px",
+                "&:hover": { backgroundColor: "#069696" },
+                "&.Mui-disabled": { backgroundColor: "#d9e1e3", color: "#77848a" },
+              }}
+            >
+              <ArrowBackIcon size="small" />
+            </IconButton>
+          </Box>
+
+          <Box sx={{ display: { xs: "flex", md: "none" }, gap: 0.25, order: { xs: 2, md: 0 } }}>
+            <IconButton onClick={() => navigate("/cart")} aria-label="سلة المشتريات" sx={{ color: "#087f7f" }}>
+              <Badge badgeContent={itemsCount} color="secondary"><ShoppingBagIcon /></Badge>
+            </IconButton>
+            <IconButton
+              onClick={() => navigate(authInfo.loggedIn ? "/customer/profile" : "/signin")}
+              aria-label="حسابي"
+              sx={{ color: "#424b52" }}
+            >
+              <AccountCircleOutlinedIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

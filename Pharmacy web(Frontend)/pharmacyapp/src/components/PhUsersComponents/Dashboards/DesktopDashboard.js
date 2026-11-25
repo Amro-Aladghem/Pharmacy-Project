@@ -9,6 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
@@ -19,9 +20,10 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import NavbarContent from "../../../components/PhUsersComponents/NavbarContent/NavbarContent";
 import { MenuItems } from "./MenuItems";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
+const collapsedDrawerWidth = 72;
 
 const MenueItems = MenuItems;
 
@@ -40,10 +42,7 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
+  width: collapsedDrawerWidth,
 });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -72,7 +71,7 @@ const AppBar = styled(MuiAppBar, {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.enteringScreen,
         }),
-        backgroundColor: "aqua",
+        backgroundColor: "var(--brand)",
       },
     },
   ],
@@ -107,10 +106,7 @@ export default function DesktopDashboard() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+  const location = useLocation();
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -122,27 +118,53 @@ export default function DesktopDashboard() {
       <AppBar
         position="fixed"
         open={open}
-        sx={{ backgroundColor: "rgb(255, 86, 114)" }}
+        elevation={0}
+        sx={{
+          backgroundColor: "var(--brand)",
+          boxShadow: "var(--shadow-sm)",
+        }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            minHeight: "68px !important",
+            px: { xs: 1.5, md: 3 },
+            gap: 1.5,
+            direction: "ltr",
+          }}
+        >
           <IconButton
             color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
+            aria-expanded={open}
+            onClick={() => setOpen((previous) => !previous)}
             edge="start"
-            sx={[
-              {
-                marginRight: 5,
-              },
-              open && { display: "none" },
-            ]}
+            sx={{
+              width: 44,
+              height: 44,
+              flex: "0 0 44px",
+              borderRadius: "12px",
+              color: "white",
+              backgroundColor: "rgba(255,255,255,0.14)",
+              "&:hover": { backgroundColor: "rgba(255,255,255,0.24)" },
+            }}
           >
-            <MenuIcon />
+            {open ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
           <NavbarContent />
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+        slotProps={{
+          paper: {
+            sx: {
+              backgroundColor: "var(--surface)",
+              borderRight: "1px solid var(--border)",
+            },
+          },
+        }}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -157,10 +179,23 @@ export default function DesktopDashboard() {
           {MenueItems.map((Item, index) => (
             <ListItem key={index} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+                selected={Boolean(Item.to) && location.pathname.endsWith(Item.to)}
+                disabled={!Item.to}
                 sx={[
                   {
                     minHeight: 48,
                     px: 2.5,
+                    mx: 1,
+                    my: 0.25,
+                    borderRadius: "var(--radius-md)",
+                    "&.Mui-selected": {
+                      backgroundColor: "var(--brand-soft)",
+                      color: "var(--brand)",
+                      fontWeight: 700,
+                    },
+                    "&.Mui-selected:hover": {
+                      backgroundColor: "var(--brand-soft)",
+                    },
                   },
                   open
                     ? {
@@ -171,7 +206,7 @@ export default function DesktopDashboard() {
                       },
                 ]}
                 onClick={() => {
-                  navigate(Item.to);
+                  if (Item.to) navigate(`/manager/dashboard/${Item.to}`);
                 }}
               >
                 <ListItemIcon

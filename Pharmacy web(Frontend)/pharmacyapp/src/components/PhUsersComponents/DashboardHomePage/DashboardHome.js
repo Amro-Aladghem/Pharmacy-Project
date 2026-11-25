@@ -27,13 +27,21 @@ export function DashboardHome() {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        gap: "50px",
-        marginTop: "100px",
+        gap: "24px",
+        marginTop: "48px",
+        mx: "auto",
+        maxWidth: "520px",
+        width: "calc(100% - 32px)",
+        padding: "40px 24px",
+        backgroundColor: "var(--surface)",
+        border: "1px solid var(--border)",
+        borderRadius: "var(--radius-lg)",
+        boxShadow: "var(--shadow-md)",
       }}
     >
       <Avatar
         src={pharmacyInfo.phImage}
-        sx={{ width: "150px", height: "150px" }}
+        sx={{ width: "128px", height: "128px", border: "4px solid var(--brand-soft)" }}
       />
       <Typography level="body-lg">صيدلية {pharmacyInfo.phName}</Typography>
       <Typography level="h1">مرحبا 👋 ,{phAuthInfo.name}</Typography>

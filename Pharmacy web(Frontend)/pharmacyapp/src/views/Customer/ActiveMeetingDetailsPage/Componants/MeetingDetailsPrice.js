@@ -29,7 +29,7 @@ export function MeetingDetailsPrice({price})
                         <Typography level="title-lg">
                             سعر الحجز:
                         </Typography>
-                        <Typography level="title-lg" sx={{marginRight:'auto',backgroundColor:'aqua'}}>
+                        <Typography level="title-lg" sx={{marginRight:'auto',backgroundColor:'rgba(8, 176, 176, 0.12)'}}>
                             {price} jd
                         </Typography>
                     </Box>

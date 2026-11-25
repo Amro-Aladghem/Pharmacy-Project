@@ -2,7 +2,10 @@ using CloudinaryDotNet;
 using DatabaseLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Mscc.GenerativeAI;
 using Services;
+using Services.Coordinators;
+using Services.ExternalServices.AIServices;
 using System.Runtime.InteropServices;
 
 namespace Pharmacy_Web_API
@@ -28,6 +31,18 @@ namespace Pharmacy_Web_API
             builder.Services.AddScoped<SystemAdminServices>();
             builder.Services.AddScoped<PersonServices>();
             builder.Services.AddScoped<FileUploadService>();
+            builder.Services.AddScoped<AiProductSearchService>();
+            builder.Services.AddScoped<ProductSearchCoordinator>();
+
+            builder.Services.AddSingleton(_ =>
+            {
+                var apiKey = builder.Configuration["GEMINI_API_KEY"]
+                             ?? builder.Configuration["Gemini:ApiKey"]
+                             ?? Environment.GetEnvironmentVariable("GEMINI_API_KEY")
+                             ?? string.Empty;
+
+                return new GoogleAI(apiKey: apiKey);
+            });
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -54,7 +69,7 @@ namespace Pharmacy_Web_API
                 options.AddPolicy("AllowAll",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:3000")
+                        policy.WithOrigins("http://localhost:3000", "http://localhost:3001")
                               .AllowAnyMethod()
                               .AllowAnyHeader()
                               .AllowCredentials();

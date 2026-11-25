@@ -1,0 +1,65 @@
+.order-status-wrapper {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.order-status-card {
+  margin-inline: auto;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.order-status-card .MuiStepper-root {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 4px 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.order-status-card .MuiStep-root {
+  min-width: 0;
+  padding-inline: 4px;
+}
+
+.order-status-card .MuiStepLabel-root,
+.order-status-card .MuiStepLabel-labelContainer {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.order-status-card .MuiStepLabel-label {
+  display: block;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.order-status-card .MuiStepConnector-root {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.order-status-card .MuiStepConnector-line {
+  border-color: #d8dfe3;
+}
+
+.order-status-mobile .MuiStepLabel-label {
+  text-align: right;
+}
+
+@media (max-width: 899px) {
+  .order-status-card {
+    width: 100% !important;
+    padding: 16px !important;
+  }
+
+  .order-status-mobile .MuiStepper-root {
+    padding: 4px 0;
+  }
+}

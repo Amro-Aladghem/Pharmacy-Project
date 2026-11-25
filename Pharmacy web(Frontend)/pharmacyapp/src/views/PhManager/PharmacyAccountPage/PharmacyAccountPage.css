@@ -1,0 +1,124 @@
+.manager-pharmacy-account {
+  width: min(calc(100% - 36px), 1180px);
+  padding: 0 12px 36px;
+  box-sizing: border-box;
+}
+
+.manager-pharmacy-account .manager-pharmacy-summary {
+  min-height: 112px;
+  padding: 16px;
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(16, 24, 40, 0.06);
+  box-sizing: border-box;
+}
+
+.manager-pharmacy-account .manager-pharmacy-summary img {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.manager-pharmacy-account .manager-pharmacy-summary .MuiTypography-root {
+  color: #20252b;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  font-weight: 700;
+}
+
+.manager-account-actions {
+  width: 100%;
+  max-width: 1080px;
+  margin: 18px auto 0;
+}
+
+.manager-account-actions > header {
+  margin: 0 8px 12px;
+}
+
+.manager-account-actions > header > span {
+  color: var(--teal, #08b0b0);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.manager-account-actions > header h2 {
+  margin: 3px 0 0;
+  color: #20252b;
+  font-size: 1.3rem;
+}
+
+.manager-account-actions-grid {
+  margin: 0 !important;
+}
+
+.manager-account-actions-grid > .MuiGrid2-root {
+  min-width: 0;
+}
+
+.manager-pharmacy-account #option-card-container {
+  display: flex;
+  width: 100%;
+  min-height: 94px;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+  box-sizing: border-box;
+}
+
+.manager-pharmacy-account #option-name {
+  min-width: 0;
+  gap: 10px;
+}
+
+.manager-pharmacy-account #option-name > svg {
+  flex: 0 0 auto;
+  color: var(--brand, rgb(255, 86, 114));
+}
+
+.manager-pharmacy-account #option-name h4 {
+  margin: 0;
+  color: #303942;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.manager-pharmacy-account #option-card-container .main-btn {
+  min-width: max-content;
+  justify-content: center;
+  padding-inline: 14px;
+}
+
+@media (max-width: 599px) {
+  .manager-pharmacy-account {
+    width: calc(100% - 20px);
+    padding: 0 4px 28px;
+  }
+
+  .manager-pharmacy-account .manager-pharmacy-summary {
+    min-height: 88px;
+    padding: 10px;
+  }
+
+  .manager-pharmacy-account #option-card-container {
+    min-height: 82px;
+    padding: 11px;
+    gap: 8px;
+  }
+
+  .manager-pharmacy-account #option-name h4 {
+    font-size: 0.88rem;
+  }
+
+  .manager-pharmacy-account #option-card-container .main-btn {
+    min-width: 80px;
+    padding: 9px 10px;
+    font-size: 0.76rem;
+  }
+
+  .manager-pharmacy-account #option-card-container .main-btn .arrow-wrapper {
+    display: none;
+  }
+}

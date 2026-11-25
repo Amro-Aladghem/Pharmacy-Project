@@ -21,12 +21,19 @@ export function PharmacyCard({
     <Link to={`/pharmacies/${Id}`}>
       <Card
         size="sm"
+        variant="outlined"
         onClick={() => navigate(`/pharmacy/${Id}`)}
         sx={{
           width: { xs: "160px", md: "170px" },
           direction: "rtl",
           alignSelf: "stretch",
           height: "90%",
+          borderRadius: "var(--radius-lg)",
+          borderColor: "var(--border)",
+          boxShadow: "var(--shadow-sm)",
+          overflow: "hidden",
+          transition: "box-shadow 0.2s",
+          "&:hover": { boxShadow: "var(--shadow-md)" },
         }}
       >
         <AspectRatio minHeight="160px" maxHeight="260px">
@@ -46,7 +53,7 @@ export function PharmacyCard({
                 fontSize: "sm",
                 fontWeight: "500",
                 display: "inline",
-                color: "black",
+                color: "var(--ink)",
               }}
               level="body-sm"
             >

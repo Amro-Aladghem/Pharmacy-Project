@@ -69,7 +69,7 @@ export function CheckDelivery() {
             <Typography
               level="h1"
               sx={{
-                backgroundColor: "aqua",
+                backgroundColor: "rgba(8, 176, 176, 0.12)",
                 borderRadius: "12px",
                 padding: "3px 3px",
               }}

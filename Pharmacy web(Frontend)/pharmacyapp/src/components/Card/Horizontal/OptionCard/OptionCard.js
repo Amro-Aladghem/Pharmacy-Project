@@ -11,6 +11,9 @@ import RememberMeIcon from "@mui/icons-material/RememberMe";
 import { useNavigate } from "react-router-dom";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import InfoIcon from "@mui/icons-material/Info";
+import VaccinesIcon from "@mui/icons-material/Vaccines";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 const icons = {
   accoutnInfo: <ContactsIcon />,
@@ -23,6 +26,9 @@ const icons = {
   vediocall: <RememberMeIcon />,
   users: <PeopleAltIcon />,
   info: <InfoIcon />,
+  inventory: <VaccinesIcon />,
+  addProduct: <AddCircleOutlineIcon />,
+  dashboard: <DashboardIcon />,
 };
 
 export function OptionCard({ optionName, page, type, buttonName }) {

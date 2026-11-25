@@ -52,9 +52,11 @@ export function NavbarContent() {
     <Box
       sx={{
         direction: "rtl",
-        width: "100%",
+        flex: 1,
+        minWidth: 0,
         display: "flex",
         alignItems: "center",
+        gap: 1,
       }}
     >
       <Link to="/manager/dashboard/home">
@@ -76,7 +78,10 @@ export function NavbarContent() {
         </Badge>
       </Link>
 
-      <Typography level="title-lg" sx={{ fontSize: { xs: "sm", md: "md" } }}>
+      <Typography
+        level="title-lg"
+        sx={{ fontSize: { xs: "sm", md: "md" }, color: "white" }}
+      >
         {" "}
         أهلا, {phAuthInfo.name}
       </Typography>
@@ -84,13 +89,16 @@ export function NavbarContent() {
       <Typography
         level="body-md"
         sx={{
-          marginRight: { xs: "6px", md: "70px" },
-          backgroundColor: "white",
+          marginRight: { xs: "auto", md: "auto" },
+          backgroundColor: "var(--surface)",
+          color: "var(--teal)",
           width: "fit-content",
-          borderRadius: "8px",
-          border: "2px solid aqua",
-          padding: { xs: "3px 3px", md: "6px 6px" },
+          borderRadius: "var(--radius-sm)",
+          border: "1px solid var(--teal)",
+          padding: { xs: "5px 9px", md: "7px 12px" },
           fontWeight: "lg",
+          fontSize: { xs: "0.72rem", sm: "0.85rem" },
+          whiteSpace: "nowrap",
         }}
       >
         {loading ? (

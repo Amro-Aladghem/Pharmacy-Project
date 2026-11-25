@@ -37,6 +37,23 @@ export const GetProducts = async (Paginated) => {
   }
 };
 
+export const SearchProductsWithAi = async (message) => {
+  const URL = `${baseURL}/ai-search`;
+
+  try {
+    const response = await axios.post(URL, { message });
+    return {
+      IsSuccess: true,
+      result: response.data,
+    };
+  } catch (error) {
+    return {
+      IsSuccess: false,
+      error: error.response,
+    };
+  }
+};
+
 export const GetProductFromSearchingByName = async (Paginated) => {
   let encodedSearchText = encodeURIComponent(Paginated.searchtext);
 
@@ -99,8 +116,8 @@ export const GetPharmacyProducts = async (Paginated) => {
   }
 };
 
-export const GetProductFullInfo = async (ProductId) => {
-  const URL = `${baseURL}/info/${ProductId}`;
+export const GetProductFullInfo = async (ProductId, PharmacyId) => {
+  const URL = `${baseURL}/info/${ProductId}?PharmacyId=${PharmacyId}`;
 
   try {
     const response = await axios.get(URL);

@@ -30,7 +30,7 @@ export function RefundRequestCard({ refundId, statusName, date, reffrenceId }) {
           <Typography>لطلب:{reffrenceId}</Typography>
         </Box>
         <Chip
-          sx={{ marginRight: "auto", backgroundColor: "aqua" }}
+          sx={{ marginRight: "auto", backgroundColor: "rgba(8, 176, 176, 0.12)" }}
           label={statusName}
         />
       </Box>

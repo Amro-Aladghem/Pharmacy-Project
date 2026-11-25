@@ -14,13 +14,11 @@ export function PharmacyInfo({phName,phone,phId})
             alignItems:'center',
             marginTop:'25px'
           }}>
-            <Box sx={{
-                width:'90%',
-                padding:'15px 15px',
-                boxShadow:'2px 3px 0.5px black',
-                borderRadius:'8px',
-                border:'1px solid black',
-                direction:'rtl'
+            <Box className="order-details-card" sx={{
+                width:'min(90%, 1100px)',
+                padding:'clamp(16px, 3vw, 24px)',
+                direction:'rtl',
+                textAlign:'right'
             }}
             >
 
@@ -28,14 +26,14 @@ export function PharmacyInfo({phName,phone,phId})
                    معلومات الصيدلية
                 </Typography>
 
-                <Box sx={{
+                <Box className="order-details-fields" sx={{
                     display:'flex',
                     justifyContent:'space-between',
                     alignItems:{xs:'normal',md:'center'},
                     marginTop:'5px',
                     flexDirection:{xs:'column',md:'row'}
                 }}>
-                    <Box sx={{display:{xs:'flex',md:'block'},marginTop:'4px',gap:'3px'}}>
+                    <Box className="order-details-field" sx={{display:{xs:'flex',md:'block'},marginTop:'4px',gap:'3px'}}>
                         <Typography level='body-md' >
                              اسم الصيدلية:
                         </Typography>
@@ -43,19 +41,19 @@ export function PharmacyInfo({phName,phone,phId})
                             {phName}
                         </Typography>
                     </Box>
-                    <Box sx={{display:{xs:'flex',md:'block'},marginTop:'4px',gap:'3px'}}>
+                    <Box className="order-details-field" sx={{display:{xs:'flex',md:'block'},marginTop:'4px',gap:'3px'}}>
                         <Typography level='body-md'>
                             رمز الصيدلية:
                         </Typography>
-                        <Typography level='body-lg'>
+                        <Typography className="order-detail-value" level='body-lg'>
                             {phId}
                         </Typography>
                     </Box>
-                    <Box sx={{display:{xs:'flex',md:'block'},marginTop:'4px',gap:'3px'}}>
+                    <Box className="order-details-field" sx={{display:{xs:'flex',md:'block'},marginTop:'4px',gap:'3px'}}>
                         <Typography level='body-md'>
                             رقم الهاتف:
                         </Typography>
-                        <Typography level='body-lg'>
+                        <Typography className="order-detail-value" level='body-lg'>
                             {phone}
                         </Typography>
                     </Box>

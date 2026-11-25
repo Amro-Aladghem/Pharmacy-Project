@@ -1,5 +1,4 @@
 import "./ProductPage.css";
-import Grid from "@mui/material/Grid2";
 import ProductInfo from "./ProductInfo";
 import ProductSubInfo from "./ProductSubInfo";
 import { GetProductFullInfo } from "../../../services/phProductsServices";
@@ -75,7 +74,14 @@ export function ProductPage() {
 
     pharmacyId = Number(params.get("pharmacy"));
 
-    if (!pharmacyId || !productId) {
+    const parsedProductId = Number(productId);
+
+    if (
+      !Number.isInteger(pharmacyId) ||
+      pharmacyId <= 0 ||
+      !Number.isInteger(parsedProductId) ||
+      parsedProductId <= 0
+    ) {
       setResult(false);
       return;
     }
@@ -84,23 +90,23 @@ export function ProductPage() {
   }, [location.search, productId]);
 
   return (
-    <Grid
-      container
-      spacing={{ md: 5, xs: 0 }}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        direction: "rtl",
-        marginTop: 1,
-      }}
-    >
+    <main className="product-detail-page" dir="rtl">
       {loading ? (
-        <CircularProgress size={40} />
+        <div className="product-page-state">
+          <CircularProgress size={40} />
+          <span>جاري تحميل معلومات المنتج</span>
+        </div>
       ) : !result ? (
-        <p>فشل تحميل معلومات المنتج</p>
+        <div className="product-page-state product-page-error">
+          <p>فشل تحميل معلومات المنتج</p>
+        </div>
       ) : (
         <>
+          <div className="product-breadcrumb">
+            <span>الرئيسية</span>
+            <span aria-hidden="true">/</span>
+            <span>تفاصيل المنتج</span>
+          </div>
           <ProductInfo info={info} pharmacyId={pharmacyInfo.pharmacyId} />
 
           <ProductSubInfo info={pharmacyInfo} />
@@ -108,7 +114,7 @@ export function ProductPage() {
           <DeliverFeesDialog />
         </>
       )}
-    </Grid>
+    </main>
   );
 }
 

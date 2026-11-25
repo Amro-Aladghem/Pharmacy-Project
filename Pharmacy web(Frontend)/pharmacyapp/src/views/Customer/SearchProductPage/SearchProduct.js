@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Grid from "@mui/material/Grid2";
 import CircularProgress from "@mui/material/CircularProgress";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import ProductCard from "../../../components/Card/ProductCard/ProductCard";
 import "./SearchProduct.css";
 
@@ -75,30 +76,54 @@ export function SearchProduct() {
   const ProductCards = products.map((Product) => {
     return (
       <Grid
+        key={Product.phProductId}
         size={{ xs: 6, md: 3, sm: 4 }}
         sx={{ display: "flex", justifyContent: "center" }}
       >
         <ProductCard
-          key={Product.phProductId}
           Id={Product.phProductId}
           Image={Product.productImageURL}
           Name={Product.name}
           PharmacyName={Product.phName}
           Price={Product.price}
+          PharmacyId={Product.pharmacyId}
         />
       </Grid>
     );
   });
 
+  const currentSearch =
+    new URLSearchParams(location.search).get("searchtext") || paginated.searchtext;
+
   return (
-    <>
+    <main className="product-search-page" dir="rtl">
+      <header className="product-search-header">
+        <div>
+          <span>ابحث في المنتجات</span>
+          <h1>نتائج البحث</h1>
+          {currentSearch ? (
+            <p>عرض المنتجات المطابقة لـ <strong>«{currentSearch}»</strong></p>
+          ) : (
+            <p>استخدم البحث للعثور على المنتج الذي تحتاجه.</p>
+          )}
+        </div>
+        {currentSearch ? (
+          <div className="product-search-query">
+            <SearchRoundedIcon />
+            <span>{currentSearch}</span>
+          </div>
+        ) : null}
+      </header>
+
       <InfiniteScroll
+        className="product-search-scroll"
         dataLength={products.length}
         next={fetchData}
         hasMore={result}
       >
         <Grid
           container
+          className="product-search-grid"
           spacing={1}
           sx={{
             my: 4,
@@ -110,7 +135,11 @@ export function SearchProduct() {
           {ProductCards}
 
           {!result && paginated.LastPhProductId == 0 ? (
-            <p>لم يتم العثور على اي أدوية</p>
+            <div className="product-search-empty">
+              <SearchRoundedIcon />
+              <h2>ما لقينا منتجات مطابقة</h2>
+              <p>جرّب اسمًا آخر أو ابحث في الأقسام.</p>
+            </div>
           ) : null}
 
           {loading ? (
@@ -138,7 +167,7 @@ export function SearchProduct() {
           ) : null}
         </Grid>
       </InfiniteScroll>
-    </>
+    </main>
   );
 }
 

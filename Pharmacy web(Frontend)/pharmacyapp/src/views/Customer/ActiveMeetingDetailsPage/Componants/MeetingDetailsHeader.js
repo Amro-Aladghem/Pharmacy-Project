@@ -73,7 +73,7 @@ export function MeetingDetailsHeader({ statusId, handelStatusChange }) {
           <Button
             sx={{
               padding: "5px 5px",
-              backgroundColor: "aqua",
+              backgroundColor: "rgba(8, 176, 176, 0.12)",
               fontSize: "16px",
               borderRadius: "8px",
               color: "black",

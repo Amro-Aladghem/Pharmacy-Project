@@ -56,10 +56,11 @@ export function PharmacyProfile() {
   }, [pharmacyId, authInfo]);
 
   return (
-    <div style={{ direction: "rtl" }}>
+    <main className="pharmacy-profile-page" dir="rtl">
       <PharmacyProfileHeader info={info} loading={loading} result={result} />
       <Grid
         container
+        className="pharmacy-services-grid"
         spacing={2}
         sx={{ display: "flex", justifyContent: "center", marginBottom: "10px" }}
       >
@@ -85,12 +86,14 @@ export function PharmacyProfile() {
         )}
       </Grid>
 
-      <div style={{ textAlign: "center" }}>
-        <h2>منتجات صيديلة {info.pharmacyName || ""}</h2>
-      </div>
-
-      <PharmacyProducts />
-    </div>
+      <section className="pharmacy-catalog-section">
+        <div className="pharmacy-catalog-heading">
+          <span>تسوّق من الصيدلية</span>
+          <h2>منتجات {info.pharmacyName || ""}</h2>
+        </div>
+        <PharmacyProducts />
+      </section>
+    </main>
   );
 }
 

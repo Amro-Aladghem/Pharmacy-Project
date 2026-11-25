@@ -99,7 +99,7 @@ export function RefundRequest() {
             style={{
               resize: "none",
               width: "250px",
-              backgroundColor: "aqua",
+              backgroundColor: "rgba(8, 176, 176, 0.12)",
               borderRadius: "8px",
               padding: "6px 6px",
             }}
